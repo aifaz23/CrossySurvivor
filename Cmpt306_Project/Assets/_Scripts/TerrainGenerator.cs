@@ -4,27 +4,47 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
+    // to track where to put the next layer
     private Vector3 currentPosition = new Vector3(0, 0, 0);
-    [SerializeField] private int maxTerrainCount = 10;
-    [SerializeField] private List<GameObject> terrains = new List<GameObject>();
-    private List<GameObject> currentTerrains = new List<GameObject>();
-
+    [SerializeField] private int maxLayerCount = 30;
+    [SerializeField] private List<GameObject> grassList = new List<GameObject>();
+    private List<GameObject> currentLayers = new List<GameObject>();
     private int grassNumber = 0;
-
+    public int currentDistance = 0;
     private void Start()
     {
-        for (int i = 0; i < maxTerrainCount; i++)
+        for (int i = 0; i < maxLayerCount; i++)
         {
-            SpawnTerrain();
+            InitialSpawnTerrain();
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        int playerDistance = GameObject.Find("Player").GetComponent<Player>().getDistanceTravelled();
+        if (playerDistance > currentDistance)
         {
             SpawnTerrain();
+            currentDistance = playerDistance;
         }
+    }
+
+    private void InitialSpawnTerrain()
+    {
+        if (grassNumber > 1)
+        {
+            grassNumber = 0;
+        }
+        GameObject layer = Instantiate(grassList[grassNumber], currentPosition, Quaternion.identity, transform);
+        currentLayers.Add(layer);
+
+        if (currentLayers.Count > maxLayerCount)
+        {
+            Destroy(currentLayers[0]);
+            currentLayers.RemoveAt(0);
+        }
+        currentPosition.z++;
+        grassNumber++;
     }
 
     private void SpawnTerrain()
@@ -33,14 +53,17 @@ public class TerrainGenerator : MonoBehaviour
         {
             grassNumber = 0;
         }
-        GameObject t = Instantiate(terrains[grassNumber], currentPosition, Quaternion.identity, transform);
-        currentTerrains.Add(t);
-        if (currentTerrains.Count > maxTerrainCount)
+        GameObject layer = Instantiate(grassList[grassNumber], currentPosition, Quaternion.identity, transform);
+
+
+        currentLayers.Add(layer);
+
+        if (currentLayers.Count > maxLayerCount)
         {
-            Destroy(currentTerrains[0]);
-            currentTerrains.RemoveAt(0);
+            Destroy(currentLayers[0]);
+            currentLayers.RemoveAt(0);
         }
-        currentPosition.x++;
+        currentPosition.z++;
         grassNumber++;
     }
 }
