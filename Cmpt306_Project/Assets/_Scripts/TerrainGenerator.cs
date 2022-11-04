@@ -14,6 +14,7 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private GameObject spawner;
     private void Start()
     {
+        maxLayerCount = 60;
         for (int i = 0; i < maxLayerCount; i++)
         {
             InitialSpawnTerrain();

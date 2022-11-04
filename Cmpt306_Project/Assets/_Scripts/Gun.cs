@@ -15,8 +15,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot() {
         if(Input.GetKey(KeyCode.Space) && Time.time >= fireTime) {
-            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation); 
-            bullet.GetComponent<Projectile>().damage = damages;
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
             fireTime = Time.time + fireRate; //Set your fire rate cooldown
         }
     }
