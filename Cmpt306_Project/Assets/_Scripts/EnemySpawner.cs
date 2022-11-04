@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
                 newX = -13;
             }
    
-            Vector3 randomLocation = new Vector3(playerPosition.x +newX,0,playerPosition.z+newZ);
+            Vector3 randomLocation = new Vector3(playerPosition.x +newX,1,playerPosition.z+newZ);
             Instantiate(enemyPrefab, randomLocation, transform.rotation);
             spawnTimer = Time.time + spawnRate;  
 
