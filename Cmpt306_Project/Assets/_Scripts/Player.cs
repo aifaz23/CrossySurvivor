@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5.0f;
-    private int distanceTravelled = 0;
+    [SerializeField] private float moveSpeed;
+    private int distanceTravelled;
+
+    void Start()
+    {
+        moveSpeed = 5.0f;
+        distanceTravelled = 0;
+    }
 
     void Update()
     {
@@ -22,7 +28,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            distanceTravelled = (int) transform.position.z;
+            distanceTravelled = (int)transform.position.z;
         }
         else if (Input.GetKey(KeyCode.S))
         {
@@ -32,11 +38,17 @@ public class Player : MonoBehaviour
         // left and right movement
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            if (transform.position.x <= 10)
+            {
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            }
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            if (transform.position.x >= -10)
+            {
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ public class TerrainGenerator : MonoBehaviour
     private List<GameObject> currentLayers = new List<GameObject>();
     private int grassNumber = 0;
     public int currentDistance = 0;
+    [SerializeField] private GameObject spawner;
     private void Start()
     {
         for (int i = 0; i < maxLayerCount; i++)
@@ -21,11 +22,14 @@ public class TerrainGenerator : MonoBehaviour
 
     private void Update()
     {
-        int playerDistance = GameObject.Find("Player").GetComponent<Player>().getDistanceTravelled();
-        if (playerDistance > currentDistance)
+        if (GameObject.Find("Player") != null)
         {
-            SpawnTerrain();
-            currentDistance = playerDistance;
+            int playerDistance = GameObject.Find("Player").GetComponent<Player>().getDistanceTravelled();
+            if (playerDistance > currentDistance)
+            {
+                SpawnTerrain();
+                currentDistance = playerDistance;
+            }
         }
     }
 
@@ -49,13 +53,25 @@ public class TerrainGenerator : MonoBehaviour
 
     private void SpawnTerrain()
     {
+        int[] xLocation = new int[] { -19, 19 };
+
         if (grassNumber > 1)
         {
             grassNumber = 0;
         }
-        GameObject layer = Instantiate(grassList[grassNumber], currentPosition, Quaternion.identity, transform);
+        GameObject layer = new GameObject("Layer");
+        layer.transform.SetParent(transform);
+        layer.transform.position = transform.position;
 
 
+        GameObject grass = Instantiate(grassList[grassNumber], currentPosition, Quaternion.identity, layer.transform);
+        if (currentDistance % 7 == 0 && currentDistance != 0)
+        {
+            GameObject sp = Instantiate(spawner, currentPosition, Quaternion.identity, layer.transform);
+            int index = Random.Range(0, 2);
+            sp.transform.position = new Vector3(sp.transform.position.x + xLocation[index], sp.transform.position.y, sp.transform.position.z);
+            // sp.transform.position = new Vector3(sp.transform.position.x - xLocation[index], sp.transform.position.y, sp.transform.position.z);
+        }
         currentLayers.Add(layer);
 
         if (currentLayers.Count > maxLayerCount)

@@ -426,8 +426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 920147074}
-  speed: 0.125
-  offset: {x: 0, y: 10, z: -3}
+  moveSpeed: 2
+  offset: {x: 0, y: 10, z: 2}
 --- !u!1 &1971717599
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +462,7 @@ MonoBehaviour:
   - {fileID: 239947088496703069, guid: 1c3a5a1470e9448bba9005c685b6c1ea, type: 3}
   - {fileID: 4114080637802061877, guid: 5cfcc2687592440e694363904b032163, type: 3}
   currentDistance: 0
+  spawner: {fileID: 7603038070090352720, guid: 34cae96141fc5489eb401256eabbdbe4, type: 3}
 --- !u!4 &1971717601
 Transform:
   m_ObjectHideFlags: 0
