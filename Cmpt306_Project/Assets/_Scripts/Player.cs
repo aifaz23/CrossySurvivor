@@ -10,17 +10,27 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 _rotation; 
     [SerializeField] private float maxHealth = 100.0f; 
     [SerializeField] private float health = 100.0f; 
+    private int distanceTravelled;
 
     // Update is called once per frame
     void Update()
     {
         MovePlayer();
+        distanceTravelled = 0;
+    }
+
+    public int getDistanceTravelled()
+    {
+        return distanceTravelled;
     }
 
     //Player Input Controls
     private void MovePlayer() {
         //Forward & Backward Movement 
-        if (Input.GetKey(KeyCode.W)) transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
+        if (Input.GetKey(KeyCode.W)){
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
+            distanceTravelled = (int)transform.position.z;
+        }
         if (Input.GetKey(KeyCode.S)) transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
 
         //Left and Right Rotation
