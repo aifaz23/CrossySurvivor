@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     Camera cam;
-    [SerializeField] private Vector3 viewPos;
+    [SerializeField] public Vector3 viewPos;
 
     public Vector3 offset;
 

@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public GameObject enemyPrefab; 
-    [SerializeField] private float spawnRate = 2.0f;
+    [SerializeField] private float spawnRate = 10f;
     private float spawnTimer; 
 
 
@@ -25,20 +25,17 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy() {
         if (Time.time > spawnTimer) {
            
-            Vector3 playerPosition = GameManager.instance.player.transform.position;
+            Vector3 cameraPosition = GameManager.instance.camera.transform.position;
             int newX = 13;
             int leftOrRight = (Random.Range(0,2));
-            int newZ = 10;
+            int newZ = Random.Range(15,25);
             if(leftOrRight==1){
                 newX = -13;
             }
    
-            Vector3 randomLocation = new Vector3(playerPosition.x +newX,1,playerPosition.z+newZ);
+            Vector3 randomLocation = new Vector3(cameraPosition.x +newX,1,cameraPosition.z+newZ);
             Instantiate(enemyPrefab, randomLocation, transform.rotation);
-            spawnTimer = Time.time + spawnRate;  
-
-            
-            
+            spawnTimer = Time.time + spawnRate;
         }
     }
 
