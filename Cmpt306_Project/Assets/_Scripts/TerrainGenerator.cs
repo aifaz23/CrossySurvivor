@@ -6,7 +6,7 @@ public class TerrainGenerator : MonoBehaviour
 {
     // to track where to put the next layer
     private Vector3 currentPosition = new Vector3(0, 0, -15);
-    [SerializeField] private int maxLayerCount = 30;
+    [SerializeField] private int maxLayerCount = 60;
     [SerializeField] private List<GameObject> grassList = new List<GameObject>();
     private List<GameObject> currentLayers = new List<GameObject>();
     private int grassNumber = 0;
@@ -14,6 +14,7 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private GameObject spawner;
     private void Start()
     {
+        maxLayerCount = 60;
         for (int i = 0; i < maxLayerCount; i++)
         {
             InitialSpawnTerrain();
