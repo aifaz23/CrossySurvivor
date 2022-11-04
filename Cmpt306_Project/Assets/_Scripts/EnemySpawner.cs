@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
             Vector3 playerPosition = GameManager.instance.player.transform.position;
             int newX = 13;
             int leftOrRight = (Random.Range(0,2));
-            int newZ = (Random.Range(-3,10));
+            int newZ = 10;
             if(leftOrRight==1){
                 newX = -13;
             }

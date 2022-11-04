@@ -5,7 +5,7 @@ using UnityEngine;
 public class TerrainGenerator : MonoBehaviour
 {
     // to track where to put the next layer
-    private Vector3 currentPosition = new Vector3(0, 0, 0);
+    private Vector3 currentPosition = new Vector3(0, 0, -15);
     [SerializeField] private int maxLayerCount = 30;
     [SerializeField] private List<GameObject> grassList = new List<GameObject>();
     private List<GameObject> currentLayers = new List<GameObject>();

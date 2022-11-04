@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     Camera cam;
-    Vector3 viewPos;
+    [SerializeField] private Vector3 viewPos;
 
     public Vector3 offset;
 
@@ -16,11 +16,12 @@ public class CameraFollow : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         offset = new Vector3(0, 10, 0);
-        moveSpeed = 3.5f;
+        moveSpeed = 2.0f;
     }
 
     void Update()
     {
+        viewPos = transform.position;
         // TODO work on camera keep up
         // viewPos = cam.WorldToViewportPoint(target.position);
         // print(viewPos.y);
@@ -36,12 +37,26 @@ public class CameraFollow : MonoBehaviour
         //     moveSpeed = 2.5f;
         //     transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, target);
         // }
-
         Movement();
     }
 
     void Movement()
     {
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, target);
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject go in gos)
+        {
+            float z = go.GetComponent<Player>().transform.position.z;
+            if(viewPos.z>z+1){
+            go.GetComponent<Player>().kill();
+            }
+            else if(viewPos.z<(z-16.0f)){
+            go.GetComponent<Player>().kill();
+            }
+            // go.GetComponent<Gun>().damages += increasedamage;
+        }
+        
+        
     }
 }
