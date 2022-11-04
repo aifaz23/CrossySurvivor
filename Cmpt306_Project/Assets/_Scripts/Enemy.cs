@@ -6,12 +6,18 @@ public class Enemy : MonoBehaviour
 {
     //Default Enemy stats
     [SerializeField] private float moveSpeed = 300.0f; 
-    [SerializeField] private float health = 99.0f; 
+    [SerializeField] private float health = 99.0f;
+    
     [SerializeField] private float damageToPlayer = 20.0f;
     [SerializeField] private float damageRate = 0.2f;
     [SerializeField] private float damageTime; 
     private bool moveLeft = false;
- 
+
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private float fireRate = 1f;
+    private float fireTime;
+    [SerializeField] public float damage = 20;
+
     public GameObject healthPrefab; 
     public GameObject weaponPrefab; 
     void Start () {
@@ -25,6 +31,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Shoot();
         Movement(); 
         if(transform.position.x<-15 || transform.position.x>15){
             Destroy(this.gameObject); 
@@ -79,4 +86,18 @@ public class Enemy : MonoBehaviour
          }
 
      }
+
+    public void Shoot()
+    {
+        if (Time.time > fireTime)
+        {
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 45, 0));
+            GameObject bullet1 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -45, 0));
+            GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -125, 0));
+            GameObject bullet3 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 125, 0));
+            
+            // bullet.GetComponent<Projectile>().damage = damage;
+            fireTime = Time.time + fireRate;
+        }
+    }
 }
