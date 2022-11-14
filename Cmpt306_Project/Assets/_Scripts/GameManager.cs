@@ -11,6 +11,21 @@ public class GameManager : MonoBehaviour
     public GameObject player; 
     public GameObject camera;
     private static bool isBossPhase = false;
+    private int score = 0;
+    public float scoreRate = 1f;
+    private float nextScore = 0.0f;
+    public EnemySpawner enemySpawner;
+
+    void Update(){
+        if (Time.time > nextScore && isBossPhase==false){
+            nextScore = Time.time + scoreRate;
+            score += 1;
+            print(score);
+            if(score%20 == 0){
+                changePhase();
+            }
+        }
+    }
 
     //Reset scene when this is called.
     public void GameOver(){
@@ -28,17 +43,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void changePhase(){
+    public void AddPoints(int scoreToAdd){
+        score += scoreToAdd;
+    }
+
+    public int GetPoints(){
+        return score;
+    }
+
+    public void changePhase(){
         isBossPhase = !isBossPhase;
+        if(isBossPhase){
+            enemySpawner.SpawnBoss();
+        }
     }
 
     //Return true if in boss phase, else turn false if in normal phase.
     public static bool getIsBossPhase(){
         return isBossPhase;
     }
-
-
-
-
 }
-

@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public GameObject enemyPrefab; 
+    public GameObject enemyPrefab;
+    public GameObject bossPrefab;
     [SerializeField] private float spawnRate = 10f;
     private float spawnTimer; 
 
@@ -33,5 +34,11 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(enemyPrefab, randomLocation, transform.rotation);
             spawnTimer = Time.time + spawnRate;
         }
+    }
+
+    public void SpawnBoss(){
+        Vector3 cameraPosition = GameManager.instance.camera.transform.position;
+        Vector3 bossLocation = new Vector3(cameraPosition.x,1,cameraPosition.z+25);
+        Instantiate(bossPrefab, bossLocation, transform.rotation);
     }
 }

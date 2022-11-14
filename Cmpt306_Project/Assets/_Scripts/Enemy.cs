@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     //Default Enemy stats
-    [SerializeField] private float moveSpeed = 300.0f; 
+    [SerializeField] private float moveSpeed = 1.0f; 
     [SerializeField] private float health = 99.0f;
     
     [SerializeField] private float damageToPlayer = 20.0f;
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject projectile;
     [SerializeField] private float fireRate = 1f;
     private float fireTime;
-    [SerializeField] public float damage = 20;
+    [SerializeField] public float projectileDamage = 5;
 
     public GameObject healthPrefab; 
     public GameObject weaponPrefab; 
@@ -39,20 +39,19 @@ public class Enemy : MonoBehaviour
     }
 
     private void Movement () {
-        Vector3 spot = transform.position;
+        //Vector3 spot = transform.position;
         if(moveLeft){
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime*2);
         }
         else{
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime*2);
         }
-        
     }
 
     public void TakeDamage (float damage) {
-        health -=damage ; 
+        health -=damage; 
 
-        if (health <= 0) {
+        if (health <= 0){
             Destroy(this.gameObject); 
             // either 0 or 1
             int dropChance = (Random.Range(0,2));
@@ -78,25 +77,21 @@ public class Enemy : MonoBehaviour
             damageTime = Time.time + damageRate;             
         }        
     }
-    void OnCollisionEnter(Collision collision)
-     {
-         if (collision.gameObject.tag == "Enemy")
-         {
-             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
-         }
-
-     }
+    void OnCollisionEnter(Collision collision){
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss"){
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
+    }
 
     public void Shoot()
     {
-        if (Time.time > fireTime)
-        {
+        if (Time.time > fireTime){
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 45, 0));
             GameObject bullet1 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -45, 0));
             GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -125, 0));
             GameObject bullet3 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 125, 0));
             
-            // bullet.GetComponent<Projectile>().damage = damage;
+            // bullet.GetComponent<Projectile>().damage = projectileDamage;
             fireTime = Time.time + fireRate;
         }
     }
