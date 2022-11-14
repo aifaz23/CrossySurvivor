@@ -9,17 +9,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnRate = 10f;
     private float spawnTimer; 
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        SpawnEnemy(); 
+        //Only spawn normal enemies when in normal phase(not boss phase)
+        if(!GameManager.getIsBossPhase()){
+            SpawnEnemy();
+        }
     }
 
     private void SpawnEnemy() {
@@ -38,6 +34,4 @@ public class EnemySpawner : MonoBehaviour
             spawnTimer = Time.time + spawnRate;
         }
     }
-
-    
 }

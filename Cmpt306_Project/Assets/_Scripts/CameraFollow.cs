@@ -21,7 +21,6 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        viewPos = transform.position;
         // TODO work on camera keep up
         // viewPos = cam.WorldToViewportPoint(target.position);
         // print(viewPos.y);
@@ -37,7 +36,12 @@ public class CameraFollow : MonoBehaviour
         //     moveSpeed = 2.5f;
         //     transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, target);
         // }
-        Movement();
+
+        //Only move camera forward when in normal phase(not boss phase)
+        if(!GameManager.getIsBossPhase()){
+            viewPos = transform.position;
+            Movement();
+        }
     }
 
     void Movement()
