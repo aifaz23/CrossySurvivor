@@ -12,8 +12,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float health = 100.0f; 
     private int distanceTravelled;
 
+    public HealthBar healthBar;
+    
     void Start(){
         distanceTravelled = 0;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
     // Update is called once per frame
     void Update()
@@ -59,7 +63,7 @@ public class Player : MonoBehaviour
   
     public void TakeDamage (float damage) {
         health -= damage; 
-        
+        healthBar.SetHealth(health);
         if (health <= 0) {
             Destroy(this.gameObject);         
             GameManager.instance.GameOver();
