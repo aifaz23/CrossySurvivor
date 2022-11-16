@@ -24,7 +24,7 @@ public class NormalEnemyDrop : MonoBehaviour
         
                 // either 0 or 1
             int dropChance = (Random.Range(0,2));
-            if(dropChance==1 &&Time.time >= dropTime){
+            if(dropChance==1){
 
                 int drop = (Random.Range(0,2));
                 if(drop==1){
@@ -33,14 +33,12 @@ public class NormalEnemyDrop : MonoBehaviour
                 }
                 else{
                     GameObject weapondrop = Instantiate(weaponPrefab, dropPosition, transform.rotation);  
-                    weapondrop.GetComponent<GunDrop>().damage = (Random.Range(1,7));
                     // // rotate on its side
                     weapondrop.transform.eulerAngles  = new Vector3(-1,-200,-90);
                 }
+                
             }
-            if(Time.time >= dropTime){
-                dropTime = Time.time + dropRate; //Set your fire rate cooldown
-            }
+           
             
         
         

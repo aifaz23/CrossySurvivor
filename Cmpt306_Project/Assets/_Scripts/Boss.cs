@@ -11,7 +11,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float damageToPlayer = 90.0f;
     [SerializeField] private float damageRate = 0.2f;
     [SerializeField] private float damageTime;
-
+    [SerializeField] private GameObject BossDrops;
     [SerializeField] private GameObject projectile;
     [SerializeField] private float fireRate = 3f;
     private float fireTime;
@@ -42,7 +42,7 @@ public class Boss : MonoBehaviour
         health -=damage;
         if (health <= 0) {
             Destroy(this.gameObject);
-            GameManager.instance.changePhase();
+            Instantiate(BossDrops, transform.position, transform.rotation); 
         }
     }
 

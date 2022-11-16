@@ -10,11 +10,13 @@ public class BossDrop : MonoBehaviour
         GameObject.Find("Player").GetComponent<Player>().maxHealth+=25;
         GameObject.Find("Player").GetComponent<Player>().health+=25;
         Destroy(this.pauseMenuUI); 
+        GameManager.instance.changePhase();
         // Impliment going to next stage here
     }
     public void revieveNewWeapon(){
         GameObject.Find("GunSwitcher").GetComponent<GunSwitching>().recieveGun();
         Destroy(this.pauseMenuUI);
+        GameManager.instance.changePhase();
         // Impliment going to next stage here
     }
    

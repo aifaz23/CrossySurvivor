@@ -20,7 +20,7 @@ public class GunDrop : MonoBehaviour
     void OnTriggerStay(Collider other) {
         if (other.transform.tag == "Player") {
             Destroy(this.gameObject); 
-            other.GetComponent<Player>().increaseDamage(damage); 
+            GameObject.Find("GunSwitcher").GetComponent<GunSwitching>().increaseDamage();
         }     
 
     }

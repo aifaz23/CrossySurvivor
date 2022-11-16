@@ -16,7 +16,7 @@ public class GunSwitching : MonoBehaviour
     void Start()
     {
         gunLoadout.Add(1);
-        currentGunObject = Instantiate(shotgun, transform.position, transform.rotation);  
+        currentGunObject = Instantiate(pistol, transform.position, transform.rotation);  
         currentGunObject.transform.parent = GameObject.Find("GunSwitcher").transform;
         currentGun=1;
     }
@@ -29,6 +29,21 @@ public class GunSwitching : MonoBehaviour
 
     private void destroyGun(){
         Destroy(currentGunObject);
+    }
+    public void increaseDamage(){
+        damageIncrease+=Random.Range(10,20);
+        if(currentGun==1){
+            currentGunObject.GetComponent<PistolGun>().baseDamage+=damageIncrease;
+        }
+        else if(currentGun==2){
+            currentGunObject.GetComponent<ShotgunGun>().baseDamage+=damageIncrease;
+        }
+        else if(currentGun==3){
+            currentGunObject.GetComponent<UziGun>().baseDamage+=damageIncrease;
+        }
+        else if(currentGun==4){
+            currentGunObject.GetComponent<SniperGun>().baseDamage+=damageIncrease;
+        }
     }
     public void recieveGun(){
         if(gunLoadout.Count==4){
