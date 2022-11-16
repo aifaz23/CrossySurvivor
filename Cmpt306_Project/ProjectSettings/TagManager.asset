@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Drop
   - Gun
+  - Boss
+  - perspectiveCam
   layers:
   - Default
   - TransparentFX

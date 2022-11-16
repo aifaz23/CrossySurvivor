@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed=1.0f;
+        moveSpeed=20.0f;
         transform.position = new Vector3(transform.position.x,transform.position.y+0.11f,transform.position.z);
         
         Destroy(this.gameObject, lifeTime); 
