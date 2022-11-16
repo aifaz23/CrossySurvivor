@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100004, guid: 25ef084687daa014b8538f35cf0d5aa6, type: 3}
       propertyPath: m_Name
-      value: shotgun
+      value: shotgun Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 25ef084687daa014b8538f35cf0d5aa6, type: 3}
       propertyPath: m_TagString
@@ -106,6 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4452892589fe5ad47a6aadd094d937c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6014911056361237822, guid: 2aafec528127908448b1c64f5cb0288b, type: 3}
+  projectile: {fileID: 7194790532775940874, guid: b4ff9292485f5f4468b053f64fa6f7d3, type: 3}
   fireRate: 1
-  damages: 100
+  baseDamage: 10

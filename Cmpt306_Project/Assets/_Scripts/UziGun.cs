@@ -7,9 +7,13 @@ public class UziGun : MonoBehaviour
     [SerializeField] private GameObject projectile; 
     [SerializeField] private float fireRate = 0.1f; 
     private float fireTime; 
-    [SerializeField] public float damages = 100.0f;
+    [SerializeField] public float baseDamage = 10.0f;
 
+    void start(){
+        baseDamage = 10.0f;
+    }
     void Update() {
+
         Shoot(); 
     }
 
@@ -23,8 +27,9 @@ public class UziGun : MonoBehaviour
 
         if(Input.GetMouseButton(0) && Time.time >= fireTime) {
             
-            Instantiate(projectile, transform.position, transform.rotation);    
-            
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);    
+            bullet.GetComponent<Projectile>().damage=baseDamage;
+            bullet.GetComponent<Projectile>().lifeTime=1.0f;
             transform.LookAt(vector);
 
             transform.rotation = Quaternion.Euler(0, eulerRotation.y,eulerRotation.z);

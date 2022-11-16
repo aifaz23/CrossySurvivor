@@ -7,8 +7,10 @@ public class SniperGun : MonoBehaviour
     [SerializeField] private GameObject projectile; 
     [SerializeField] private float fireRate = 2.0f; 
     private float fireTime; 
-    [SerializeField] public float damages = 100.0f;
-
+    [SerializeField] public float baseDamage = 80.0f;
+    void start(){
+        baseDamage = 80.0f;
+    }
     void Update() {
         Shoot(); 
     }
@@ -21,7 +23,9 @@ public class SniperGun : MonoBehaviour
         Vector3 eulerRotation = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(0, eulerRotation.y,eulerRotation.z);
         if(Input.GetMouseButtonDown(0) && Time.time >= fireTime) {
-            Instantiate(projectile, transform.position, transform.rotation);    
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);    
+            bullet.GetComponent<Projectile>().damage=baseDamage;
+            bullet.GetComponent<Projectile>().lifeTime=3.0f;
             transform.LookAt(vector);
             transform.rotation = Quaternion.Euler(0, eulerRotation.y,eulerRotation.z);
             fireTime = Time.time + fireRate; //Set your fire rate cooldown

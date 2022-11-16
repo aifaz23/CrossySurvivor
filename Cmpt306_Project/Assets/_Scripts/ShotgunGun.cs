@@ -7,9 +7,11 @@ public class ShotgunGun : MonoBehaviour
     [SerializeField] private GameObject projectile; 
     [SerializeField] private float fireRate = 1.0f; 
     private float fireTime; 
-    [SerializeField] public float damages = 10.0f;
+    [SerializeField] public float baseDamage = 20.0f;
 
- 
+    void start(){
+        baseDamage = 20.0f;
+    }
     void Update() {
 
             
@@ -24,9 +26,12 @@ public class ShotgunGun : MonoBehaviour
         Vector3 eulerRotation = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(0, eulerRotation.y,eulerRotation.z);
         if(Input.GetMouseButtonDown(0) && Time.time >= fireTime) {
-            
+            GameObject bullet;
+
             for(int i=0; i<5; i++){
-                Instantiate(projectile, transform.position, transform.rotation);    
+                bullet = Instantiate(projectile, transform.position, transform.rotation);    
+                bullet.GetComponent<Projectile>().damage=baseDamage;   
+                bullet.GetComponent<Projectile>().lifeTime=0.3f;
                 transform.Rotate(Vector3.up*(Random.Range(-15,15)));
             }
   

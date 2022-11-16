@@ -15,10 +15,10 @@ public class GunSwitching : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gunLoadout.Add(2);
+        gunLoadout.Add(1);
         currentGunObject = Instantiate(shotgun, transform.position, transform.rotation);  
         currentGunObject.transform.parent = GameObject.Find("GunSwitcher").transform;
-        currentGun=2;
+        currentGun=1;
     }
 
     // Update is called once per frame
@@ -33,6 +33,19 @@ public class GunSwitching : MonoBehaviour
     public void recieveGun(){
         if(gunLoadout.Count==4){
             damageIncrease+=10;
+            if(currentGun==1){
+                currentGunObject.GetComponent<PistolGun>().baseDamage+=damageIncrease;
+            }
+            else if(currentGun==2){
+                currentGunObject.GetComponent<ShotgunGun>().baseDamage+=damageIncrease;
+            }
+            else if(currentGun==3){
+                currentGunObject.GetComponent<UziGun>().baseDamage+=damageIncrease;
+            }
+            else if(currentGun==4){
+                currentGunObject.GetComponent<SniperGun>().baseDamage+=damageIncrease;
+            }
+            
         }
         else{
             int gun = Random.Range(1,5);
@@ -47,27 +60,27 @@ public class GunSwitching : MonoBehaviour
          if (Input.GetKey(KeyCode.Alpha1) && currentGun!=1 && gunLoadout.Contains(1)){
             destroyGun();
             currentGunObject = Instantiate(pistol, transform.position, transform.rotation);  
-            currentGunObject.GetComponent<PistolGun>().damages+=damageIncrease;
+            currentGunObject.GetComponent<PistolGun>().baseDamage+=damageIncrease;
             currentGun=1;
         }
         if (Input.GetKey(KeyCode.Alpha2) && currentGun!=2 && gunLoadout.Contains(2)){
             destroyGun();
             currentGunObject = Instantiate(shotgun, transform.position, transform.rotation); 
-            currentGunObject.GetComponent<ShotgunGun>().damages+=damageIncrease;
+            currentGunObject.GetComponent<ShotgunGun>().baseDamage+=damageIncrease;
             
             currentGun=2;
         }
         if (Input.GetKey(KeyCode.Alpha3) && currentGun!=3 && gunLoadout.Contains(3)){
             destroyGun();
             currentGunObject = Instantiate(uzi, transform.position, transform.rotation);  
-            currentGunObject.GetComponent<UziGun>().damages+=damageIncrease;
+            currentGunObject.GetComponent<UziGun>().baseDamage+=damageIncrease;
             
             currentGun=3;
         }
         if (Input.GetKey(KeyCode.Alpha4) && currentGun!=4 && gunLoadout.Contains(4)){
             destroyGun();
             currentGunObject = Instantiate(sniper, transform.position, transform.rotation); 
-            currentGunObject.GetComponent<SniperGun>().damages+=damageIncrease;
+            currentGunObject.GetComponent<SniperGun>().baseDamage+=damageIncrease;
     
             currentGun=4;
         }

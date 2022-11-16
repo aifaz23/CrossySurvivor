@@ -7,8 +7,11 @@ public class PistolGun : MonoBehaviour
     [SerializeField] private GameObject projectile; 
     [SerializeField] private float fireRate = 1.0f; 
     private float fireTime; 
-    [SerializeField] public float damages = 100.0f;
+    [SerializeField] public float baseDamage = 40.0f;
 
+    void start(){
+        baseDamage = 40.0f;
+    }
     void Update() {
 
         Shoot(); 
@@ -23,7 +26,9 @@ public class PistolGun : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, eulerRotation.y,eulerRotation.z);
         if(Input.GetMouseButtonDown(0) && Time.time >= fireTime) {
             
-            Instantiate(projectile, transform.position, transform.rotation);    
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);    
+            bullet.GetComponent<Projectile>().damage=baseDamage;  
+            bullet.GetComponent<Projectile>().lifeTime=3.0f; 
 
             transform.LookAt(vector);
 
