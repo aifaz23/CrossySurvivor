@@ -18,8 +18,7 @@ public class Enemy : MonoBehaviour
     private float fireTime;
     [SerializeField] public float projectileDamage = 5;
 
-    public GameObject healthPrefab; 
-    public GameObject weaponPrefab; 
+    
     void Start () {
         Vector3 playerPosition = GameManager.instance.player.transform.position;
         if (GameManager.instance.player) { //null reference check
@@ -53,21 +52,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0){
             Destroy(this.gameObject); 
-            // either 0 or 1
-            int dropChance = (Random.Range(0,2));
-            if(dropChance==1){
-                int drop = (Random.Range(0,2));
-                if(drop==1){
-                    GameObject healthpack = Instantiate(healthPrefab, transform.position, transform.rotation);  
-                    healthpack.GetComponent<healthDrop>().health = (Random.Range(10,100));
-                }
-                else{
-                    GameObject weapondrop = Instantiate(weaponPrefab, transform.position, transform.rotation);  
-                    weapondrop.GetComponent<GunDrop>().damage = (Random.Range(1,7));
-                    // rotate on its side
-                    weapondrop.transform.eulerAngles  = new Vector3(-1,-200,-90);
-                }
-            }
+            GameManager.instance.summonDrop(transform.position);
         }
     }
 

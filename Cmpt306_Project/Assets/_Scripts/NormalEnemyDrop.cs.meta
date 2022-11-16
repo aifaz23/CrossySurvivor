@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 2ad98314921764b459f081a48dab0eba
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - healthPrefab: {instanceID: 0}
+  - weaponPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

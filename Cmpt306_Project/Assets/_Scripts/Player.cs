@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         gos = GameObject.FindGameObjectsWithTag("Gun");
         foreach (GameObject go in gos)
         {
-            go.GetComponent<Gun>().damages += increasedamage;
+            go.GetComponent<PistolGun>().damages += increasedamage;
         }
     }
 

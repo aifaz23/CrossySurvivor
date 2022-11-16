@@ -2,26 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class shotGunProjectile : MonoBehaviour
 {
-   [SerializeField] private float lifeTime = 5.0f;   
+
+   [SerializeField] private float lifeTime = 1.0f;   
    [SerializeField] private float moveSpeed = 20.0f; 
    [SerializeField] public float damage = 100.0f; 
+   private float positiony;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed=1.0f;
+        moveSpeed=20.0f;
+        lifeTime = 0.2f;   
         transform.position = new Vector3(transform.position.x,transform.position.y+0.11f,transform.position.z);
-        
+        Vector3 position = transform.position;
+        positiony=position.y;
+  
         Destroy(this.gameObject, lifeTime); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         MoveProjectile(); 
     }
     
@@ -41,4 +46,6 @@ public class Projectile : MonoBehaviour
         }
     }
     
+
+
 }

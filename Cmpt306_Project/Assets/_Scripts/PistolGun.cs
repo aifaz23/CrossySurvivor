@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class PistolGun : MonoBehaviour
 {
     [SerializeField] private GameObject projectile; 
-    [SerializeField] private float fireRate = 0.1f; 
+    [SerializeField] private float fireRate = 1.0f; 
     private float fireTime; 
     [SerializeField] public float damages = 100.0f;
 

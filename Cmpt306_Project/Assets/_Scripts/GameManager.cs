@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float scoreRate = 1f;
     private float nextScore = 0.0f;
     public EnemySpawner enemySpawner;
+    public NormalEnemyDrop normalEnemyDrop;
 
     void Update(){
         if (Time.time > nextScore && isBossPhase==false){
@@ -56,6 +57,9 @@ public class GameManager : MonoBehaviour
         if(isBossPhase){
             enemySpawner.SpawnBoss();
         }
+    }
+    public void summonDrop(Vector3 dropPosition){
+        normalEnemyDrop.DropItem(dropPosition);
     }
 
     //Return true if in boss phase, else turn false if in normal phase.
