@@ -9,19 +9,9 @@ public class ShotgunGun : MonoBehaviour
     private float fireTime; 
     [SerializeField] public float damages = 10.0f;
 
-    void Start(){
-        fireRate=0.1f;
-        damages=10.0f;
-    }
+ 
     void Update() {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject go in gos)
-        {
-            transform.position = go.transform.position;
-        }
-        
-        
+
             
         Shoot(); 
     }

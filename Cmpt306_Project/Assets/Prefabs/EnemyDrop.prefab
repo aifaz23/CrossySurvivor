@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad98314921764b459f081a48dab0eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropRate: 1
   healthPrefab: {fileID: 6303898703726418611, guid: 2171ca30a3e9fb1408a17219fdc7e313, type: 3}
   weaponPrefab: {fileID: 6452714222216868929, guid: 095270a899e30e144ac32ade54f9ced3, type: 3}
+  bossPrefab: {fileID: 8549390617051480634, guid: 967f1db511349244f877d9affbd52286, type: 3}

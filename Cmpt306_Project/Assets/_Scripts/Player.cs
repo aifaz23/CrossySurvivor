@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float rotateSpeed = 360.0f; 
     [SerializeField] private Vector3 _rotation; 
-    [SerializeField] private float maxHealth = 100.0f; 
-    [SerializeField] private float health = 100.0f; 
+    [SerializeField] public float maxHealth = 100.0f; 
+    [SerializeField] public float health = 100.0f; 
     private int distanceTravelled;
 
     void Start(){
@@ -75,12 +75,7 @@ public class Player : MonoBehaviour
     }
 
     public void increaseDamage (float increasedamage) {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Gun");
-        foreach (GameObject go in gos)
-        {
-            go.GetComponent<PistolGun>().damages += increasedamage;
-        }
+        this.GetComponent<GunSwitching>().damageIncrease+=increasedamage;
     }
 
     public void restoreHP (float hp) {

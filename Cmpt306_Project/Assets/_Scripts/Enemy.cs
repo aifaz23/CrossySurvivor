@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float fireRate = 1f;
     private float fireTime;
     [SerializeField] public float projectileDamage = 5;
-
+   
     
     void Start () {
         Vector3 playerPosition = GameManager.instance.player.transform.position;
