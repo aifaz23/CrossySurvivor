@@ -10,6 +10,7 @@ public class PistolGun : MonoBehaviour
     [SerializeField] public float damages = 100.0f;
 
     void Update() {
+
         Shoot(); 
     }
 
