@@ -8,7 +8,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Billboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/HealthBar.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -71,6 +70,7 @@
       <workItem from="1667602898813" duration="14000" />
       <workItem from="1667602956610" duration="2204000" />
       <workItem from="1668465867294" duration="2131000" />
+      <workItem from="1668702616051" duration="1628000" />
     </task>
     <servers />
   </component>

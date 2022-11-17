@@ -9,12 +9,7 @@ public class HealthBar : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
-    public Transform cam;
-    private void LateUpdate()
-    {
-        transform.position = Camera.main.WorldToScreenPoint(this.transform.position + cam.forward);
-    }
-
+    
     public void SetMaxHealth(float health)
     {
         slider.maxValue = health;
