@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class NameMenu : MonoBehaviour
 {
-    private string name;
+    private string Sname;
 
     public void Enter() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Debug.Log(name);
+        Debug.Log(Sname);
     }
 
     public void ReadStringInput(string s) {
-        name = s;
+        Sname = s;
     }
 }
