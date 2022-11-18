@@ -17,23 +17,42 @@ public class Boss : MonoBehaviour
     private float fireTime;
     [SerializeField] public float projectileDamage = 10;
 
+    //Random movement stuff
+    private float changeDirectionTimer;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        changeDirectionTimer = Random.Range(3,7);
     }
 
     // Update is called once per frame
     void Update()
     {
         Shoot();
-        Movement(); 
+        Movement();
     }
 
     private void Movement () {
         if (GameManager.instance.player) {//null reference check
-            transform.LookAt(GameManager.instance.player.transform.position);
+        //Change direction the boss is moving
+            if(Time.time > changeDirectionTimer){
+                transform.rotation = Quaternion.Euler(0, Random.Range(0,360), 0);
+                changeDirectionTimer = Time.time + Random.Range(3,7);
+            }
+
+            Vector3 cameraPos = GameManager.instance.camera.transform.position;
+
+            if(transform.position.x - cameraPos.x >15){
+                transform.rotation = Quaternion.Euler(0, Random.Range(90,270), 0);
+            }else if(transform.position.x- cameraPos.x <-15){
+                transform.rotation = Quaternion.Euler(0, Random.Range(-90,90), 0);
+            }else if(transform.position.z-cameraPos.z >15){
+                transform.rotation = Quaternion.Euler(0, Random.Range(-180,0), 0);
+            }else if(transform.position.z- cameraPos.z <-15){
+                transform.rotation = Quaternion.Euler(0, Random.Range(0,180), 0);
+            }
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
     }
