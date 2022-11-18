@@ -48,9 +48,9 @@ public class Boss : MonoBehaviour
 
             Vector3 cameraPos = GameManager.instance.camera.transform.position;
 
-            if(transform.position.x - cameraPos.x >12){
+            if(transform.position.x - cameraPos.x >10){
                 transform.rotation = Quaternion.Euler(0, Random.Range(90,270), 0);
-            }else if(transform.position.x- cameraPos.x <-12){
+            }else if(transform.position.x- cameraPos.x <-10){
                 transform.rotation = Quaternion.Euler(0, Random.Range(-90,90), 0);
             }else if(transform.position.z-cameraPos.z >15){
                 transform.rotation = Quaternion.Euler(0, Random.Range(-180,0), 0);

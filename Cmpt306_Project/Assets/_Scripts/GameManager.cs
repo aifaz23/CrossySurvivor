@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public void GameOver(){
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+        isBossPhase = false;
     }
 
     void Awake() {

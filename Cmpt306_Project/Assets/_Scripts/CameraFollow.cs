@@ -47,20 +47,5 @@ public class CameraFollow : MonoBehaviour
     void Movement()
     {
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, target);
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject go in gos)
-        {
-            float z = go.GetComponent<Player>().transform.position.z;
-            if(viewPos.z>z+1){
-            go.GetComponent<Player>().kill();
-            }
-            else if(viewPos.z<(z-16.0f)){
-            go.GetComponent<Player>().kill();
-            }
-            // go.GetComponent<Gun>().damages += increasedamage;
-        }
-        
-        
     }
 }
