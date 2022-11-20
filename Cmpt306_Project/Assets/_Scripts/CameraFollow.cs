@@ -36,7 +36,6 @@ public class CameraFollow : MonoBehaviour
         //     moveSpeed = 2.5f;
         //     transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, target);
         // }
-
         //Only move camera forward when in normal phase(not boss phase)
         if(!GameManager.getIsBossPhase()){
             viewPos = transform.position;
@@ -53,10 +52,10 @@ public class CameraFollow : MonoBehaviour
         {
             float z = go.GetComponent<Player>().transform.position.z;
             if(viewPos.z>z+1){
-            go.GetComponent<Player>().kill();
+                go.GetComponent<Player>().kill();
             }
             else if(viewPos.z<(z-16.0f)){
-            go.GetComponent<Player>().kill();
+                go.GetComponent<Player>().kill();
             }
             // go.GetComponent<Gun>().damages += increasedamage;
         }
