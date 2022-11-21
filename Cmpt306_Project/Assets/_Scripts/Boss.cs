@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -13,29 +12,61 @@ public class Boss : MonoBehaviour
     [SerializeField] private float damageRate = 0.2f;
     [SerializeField] private float damageTime;
 
+    //Shooting stuff
     [SerializeField] private GameObject projectile;
-    [SerializeField] private float fireRate = 3f;
+    [SerializeField] private float fireRate = 10f;
     private float fireTime;
     [SerializeField] public float projectileDamage = 10;
+    private float angle = 0f;
+    private Vector3 bulletMoveDirection;
+
+    //Random movement stuff
+    private float changeDirectionTimer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        changeDirectionTimer = Random.Range(3,7);
+        InvokeRepeating("Fire", 0f, 0.1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Shoot();
-        Movement(); 
+        ShootCircle();
+        Movement();
     }
 
     private void Movement () {
         if (GameManager.instance.player) {//null reference check
-            transform.LookAt(GameManager.instance.player.transform.position);
+        //Change direction the boss is moving
+            if(Time.time > changeDirectionTimer){
+                transform.rotation = Quaternion.Euler(0, Random.Range(0,360), 0);
+                changeDirectionTimer = Time.time + Random.Range(3,7);
+            }
+
+            Vector3 cameraPos = GameManager.instance.camera.transform.position;
+
+            if(transform.position.x - cameraPos.x >10){
+                transform.rotation = Quaternion.Euler(0, Random.Range(90,270), 0);
+            }else if(transform.position.x- cameraPos.x <-10){
+                transform.rotation = Quaternion.Euler(0, Random.Range(-90,90), 0);
+            }else if(transform.position.z-cameraPos.z >15){
+                transform.rotation = Quaternion.Euler(0, Random.Range(-180,0), 0);
+            }else if(transform.position.z- cameraPos.z <-15){
+                transform.rotation = Quaternion.Euler(0, Random.Range(0,180), 0);
+            }
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        }
+    }
+
+    private void Fire(){
+        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, angle, 0));
+        GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, angle + 180f, 0));
+        angle +=10f;
+        if(angle >=360f){
+            angle = 0f;
         }
     }
 
@@ -59,19 +90,15 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void ShootCircle()
     {
         if (Time.time > fireTime){
-            //Shoot in all straight and diagonal angles
-            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 45, 0));
-            GameObject bullet1 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -45, 0));
-            GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -125, 0));
-            GameObject bullet3 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 125, 0));
-            GameObject bullet4 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 0, 0));
-            GameObject bullet5 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 90, 0));
-            GameObject bullet6 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -90, 0));
-            GameObject bullet7 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 180, 0));
-            
+            //Shoot in all angles in increments
+            float currentAngle = 0f;
+            while(currentAngle<360){
+                GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, currentAngle, 0));
+                currentAngle+=10;
+            }
             // bullet.GetComponent<Projectile>().damage = projectileDamage;
             fireTime = Time.time + fireRate;
         }

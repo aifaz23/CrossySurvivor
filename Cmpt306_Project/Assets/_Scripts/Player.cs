@@ -62,15 +62,12 @@ public class Player : MonoBehaviour
         health -= damage; 
         
         if (health <= 0) {
-            Destroy(this.gameObject);   
-            GameManager.instance.GameOver(); 
-            GameManager.instance.playerDead = true;           
+            kill();          
         }
     }
 
     public void kill () {
         health = 0; 
-
         if (health <= 0) {
             Destroy(this.gameObject);         
             GameManager.instance.GameOver(); 
