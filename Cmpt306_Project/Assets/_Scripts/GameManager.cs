@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject player; 
     public GameObject camera;
     private static bool isBossPhase = false;
-    private int score = 0;
+    public static int score = 0;
     public float scoreRate = 1f;
     private float nextScore = 0.0f;
     public TextMeshProUGUI scoreTxt;
@@ -21,12 +21,15 @@ public class GameManager : MonoBehaviour
     public EnemySpawner enemySpawner;
     public GameObject gameOver;
     public GameObject pauseMenu;
-    public ScoreManager scoreManager;
+    public static bool gameEnded = false;
 
     void Start() {
+        gameEnded = false;
+        isBossPhase = false;
         gameOver.SetActive(false);
         pauseMenu.SetActive(true);
         playerDead = false;
+        score = 0;
     }
 
     void Update(){
@@ -42,7 +45,9 @@ public class GameManager : MonoBehaviour
 
     //Reset scene when this is called.
     public void GameOver(){
+        LeaderboardManager.isGameOver = true;
         isBossPhase = false;
+        gameEnded = true;
         pauseMenu.SetActive(false);
         scoreTxt.text = "Score: " + score.ToString();
         gameOver.SetActive(true);

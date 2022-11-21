@@ -1152,6 +1152,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1241,6 +1242,20 @@ MonoBehaviour:
   moveSpeed: 2
   viewPos: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 10, z: 2}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a68a5e1c6a30f84ba803c0960912d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  playerName: 
 --- !u!1 &974910410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,6 +2378,7 @@ MonoBehaviour:
   enemySpawner: {fileID: 7870330268581617522, guid: 34cae96141fc5489eb401256eabbdbe4, type: 3}
   gameOver: {fileID: 161101325}
   pauseMenu: {fileID: 974910410}
+  scoreManager: {fileID: 0}
 --- !u!4 &1966741809
 Transform:
   m_ObjectHideFlags: 0

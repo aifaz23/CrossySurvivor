@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System;
 
-public class LeaderBoard : MonoBehaviour
+[Serializable]
+public class Leaderboard
 {
-    public void Home() {
-        SceneManager.LoadScene("StartMenu");
+    public string playerName;
+    public float score;
+
+    public Leaderboard(string playerName, float score) {
+        this.playerName = playerName;
+        this.score = score;
     }
 }

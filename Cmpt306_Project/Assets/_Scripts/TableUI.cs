@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class RowUI : MonoBehaviour
+public class TableUI : MonoBehaviour
 {
     public TextMeshProUGUI rank;
     public TextMeshProUGUI playerName;
