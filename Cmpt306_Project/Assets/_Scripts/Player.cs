@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -69,13 +70,17 @@ public class Player : MonoBehaviour
         health -= damage; 
         
         if (health <= 0) {
-            kill();
+            kill();          
         }
     }
 
-    private void kill () {
-        Destroy(this.gameObject);         
-        GameManager.instance.GameOver();
+    public void kill () {
+        health = 0; 
+        if (health <= 0) {
+            Destroy(this.gameObject);         
+            GameManager.instance.GameOver(); 
+            GameManager.instance.playerDead = true;      
+        }
     }
 
     public void increaseDamage (float increasedamage) {
