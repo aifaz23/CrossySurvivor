@@ -8,6 +8,8 @@ public class NormalEnemyDrop : MonoBehaviour
     private float dropTime; 
     public GameObject healthPrefab; 
     public GameObject weaponPrefab; 
+    public GameObject speedPrefab; 
+    public GameObject shieldPrefab; 
     // Start is called before the first frame update
     void Start()
     {
@@ -26,15 +28,19 @@ public class NormalEnemyDrop : MonoBehaviour
             int dropChance = (Random.Range(0,2));
             if(dropChance==1){
 
-                int drop = (Random.Range(0,2));
+                int drop = (Random.Range(0,4));
                 if(drop==1){
-                    GameObject healthpack = Instantiate(healthPrefab, dropPosition, transform.rotation);  
-                    healthpack.GetComponent<healthDrop>().health = (Random.Range(10,100));
+                    Instantiate(healthPrefab, dropPosition, transform.rotation);  
+                }
+                else if(drop==2){
+                    Instantiate(shieldPrefab, dropPosition, transform.rotation);  
+                }
+                else if(drop==3){
+                    Instantiate(speedPrefab, dropPosition, transform.rotation);  
                 }
                 else{
-                    GameObject weapondrop = Instantiate(weaponPrefab, dropPosition, transform.rotation);  
-                    // // rotate on its side
-                    weapondrop.transform.eulerAngles  = new Vector3(-1,-200,-90);
+                    Instantiate(weaponPrefab, dropPosition, transform.rotation);  
+                    
                 }
                 
             }

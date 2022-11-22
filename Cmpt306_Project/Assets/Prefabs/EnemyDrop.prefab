@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropRate: 1
-  healthPrefab: {fileID: 6303898703726418611, guid: 2171ca30a3e9fb1408a17219fdc7e313, type: 3}
-  weaponPrefab: {fileID: 6452714222216868929, guid: 095270a899e30e144ac32ade54f9ced3, type: 3}
-  bossPrefab: {fileID: 8549390617051480634, guid: 967f1db511349244f877d9affbd52286, type: 3}
+  healthPrefab: {fileID: 5961176146022666963, guid: 6b92a6abba00b69479cab53c91905757, type: 3}
+  weaponPrefab: {fileID: 4701834244098748287, guid: 6a7a40fc6d66bf9449ab63f566e0ef5b, type: 3}
+  speedPrefab: {fileID: 1381806027445550377, guid: f8071a8cfea83574b8aa0460050243f6, type: 3}
+  shieldPrefab: {fileID: 6632516737397382404, guid: b947c0cb6b4feae4585eda69a0551be8, type: 3}

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GunDrop : MonoBehaviour
 {
-    [SerializeField] public float damage = 50.0f; 
 
     // Start is called before the first frame update
     void Start()
@@ -24,15 +23,4 @@ public class GunDrop : MonoBehaviour
         }     
 
     }
-    void OnCollisionEnter(Collision collision)
-     {
-         if (collision.gameObject.tag == "Enemy")
-         {
-             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
-         }
-         if (collision.gameObject.tag == "Drop")
-         {
-             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
-         }
-     }
 }

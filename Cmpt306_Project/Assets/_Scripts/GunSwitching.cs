@@ -15,7 +15,7 @@ public class GunSwitching : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gunLoadout.Add(1);
+        gunLoadout.Add(1); 
         currentGunObject = Instantiate(pistol, transform.position, transform.rotation);  
         currentGunObject.transform.parent = GameObject.Find("GunSwitcher").transform;
         currentGun=1;
@@ -27,9 +27,28 @@ public class GunSwitching : MonoBehaviour
         switchGuns();
     }
 
-    private void destroyGun(){
+
+    private void initiaiteNewGun(int newGun){
         Destroy(currentGunObject);
+        if (newGun==1){
+            currentGunObject = Instantiate(pistol, transform.position, transform.rotation);  
+            currentGunObject.GetComponent<PistolGun>().baseDamage+=damageIncrease;
+        }
+        else if (newGun==2){
+            currentGunObject = Instantiate(shotgun, transform.position, transform.rotation); 
+            currentGunObject.GetComponent<ShotgunGun>().baseDamage+=damageIncrease;
+        }
+        if (newGun==3){
+            currentGunObject = Instantiate(uzi, transform.position, transform.rotation);  
+            currentGunObject.GetComponent<UziGun>().baseDamage+=damageIncrease;
+        }
+        if (newGun==4){
+            currentGunObject = Instantiate(sniper, transform.position, transform.rotation); 
+            currentGunObject.GetComponent<SniperGun>().baseDamage+=damageIncrease;
+        }
+        currentGun=newGun;
     }
+
     public void increaseDamage(){
         damageIncrease+=Random.Range(10,20);
         if(currentGun==1){
@@ -72,32 +91,33 @@ public class GunSwitching : MonoBehaviour
         }
     }
     private void switchGuns(){
-         if (Input.GetKey(KeyCode.Alpha1) && currentGun!=1 && gunLoadout.Contains(1)){
-            destroyGun();
-            currentGunObject = Instantiate(pistol, transform.position, transform.rotation);  
-            currentGunObject.GetComponent<PistolGun>().baseDamage+=damageIncrease;
-            currentGun=1;
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f ) // forward
+        {
+            currentGun++;
+            if(currentGun>4){
+                currentGun=1;
+            }
+            initiaiteNewGun(currentGun);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f ) // backwards
+        {
+            currentGun--;
+            if(currentGun<1){
+                currentGun=4;
+            }
+            initiaiteNewGun(currentGun);
+        }
+        if (Input.GetKey(KeyCode.Alpha1) && currentGun!=1 && gunLoadout.Contains(1)){
+            initiaiteNewGun(1);
         }
         if (Input.GetKey(KeyCode.Alpha2) && currentGun!=2 && gunLoadout.Contains(2)){
-            destroyGun();
-            currentGunObject = Instantiate(shotgun, transform.position, transform.rotation); 
-            currentGunObject.GetComponent<ShotgunGun>().baseDamage+=damageIncrease;
-            
-            currentGun=2;
+            initiaiteNewGun(2);
         }
         if (Input.GetKey(KeyCode.Alpha3) && currentGun!=3 && gunLoadout.Contains(3)){
-            destroyGun();
-            currentGunObject = Instantiate(uzi, transform.position, transform.rotation);  
-            currentGunObject.GetComponent<UziGun>().baseDamage+=damageIncrease;
-            
-            currentGun=3;
+            initiaiteNewGun(3);
         }
         if (Input.GetKey(KeyCode.Alpha4) && currentGun!=4 && gunLoadout.Contains(4)){
-            destroyGun();
-            currentGunObject = Instantiate(sniper, transform.position, transform.rotation); 
-            currentGunObject.GetComponent<SniperGun>().baseDamage+=damageIncrease;
-    
-            currentGun=4;
+            initiaiteNewGun(4);
         }
         currentGunObject.transform.parent = GameObject.Find("GunSwitcher").transform;
 

@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] public float maxHealth = 100.0f; 
     [SerializeField] public float health = 100.0f; 
     private int distanceTravelled;
+    private bool speedBuff = false;
+    public float speedBuffTime;
+    private bool shieldBuff = false;
+    public float shieldBuffTime;
 
     void Start(){
         distanceTravelled = 0;
@@ -18,6 +22,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time > speedBuffTime && speedBuff){
+            speedBuff=false;
+        }
+        if (Time.time > shieldBuffTime && shieldBuff){
+            shieldBuff=false;
+        }
         MovePlayer();
     }
 
@@ -58,8 +68,9 @@ public class Player : MonoBehaviour
     }
   
     public void TakeDamage (float damage) {
-        health -= damage; 
-        
+        if(!shieldBuff){
+            health -= damage; 
+        }
         if (health <= 0) {
             Destroy(this.gameObject);         
             GameManager.instance.GameOver();
@@ -83,6 +94,18 @@ public class Player : MonoBehaviour
         if(health>maxHealth){
             health=maxHealth;
         }
+    }
+
+    public void getSpeedBuff()
+    {
+        moveSpeed+= (Random.Range(0.5f,1));
+        speedBuffTime = Time.time + (Random.Range(1f,5f));
+        speedBuff=true;
+    }
+    public void getShieldBuff()
+    {
+        shieldBuffTime = Time.time + (Random.Range(1f,5f));
+        shieldBuff=true;
     }
 
 

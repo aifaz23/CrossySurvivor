@@ -52,7 +52,7 @@ public class CameraFollow : MonoBehaviour
         foreach (GameObject go in gos)
         {
             float z = go.GetComponent<Player>().transform.position.z;
-            if(viewPos.z>z+1){
+            if(viewPos.z>z+16.0f){
             go.GetComponent<Player>().kill();
             }
             else if(viewPos.z<(z-16.0f)){
