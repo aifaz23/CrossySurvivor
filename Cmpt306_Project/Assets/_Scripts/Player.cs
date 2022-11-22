@@ -98,8 +98,6 @@ public class Player : MonoBehaviour
             health=maxHealth;
         }
     }
-
-
 }
 
 
