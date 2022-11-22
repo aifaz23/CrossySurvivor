@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null; 
-    public GameObject player; 
+    public static GameManager instance = null;
+    public GameObject player;
     public GameObject camera;
     private static bool isBossPhase = false;
     public static int score = 0;
@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public static bool gameEnded = false;
 
-    void Start() {
+    void Start()
+    {
         gameEnded = false;
         isBossPhase = false;
         gameOver.SetActive(false);
@@ -32,19 +33,23 @@ public class GameManager : MonoBehaviour
         score = 0;
     }
 
-    void Update(){
-        if (Time.time > nextScore && isBossPhase == false && playerDead == false){
+    void Update()
+    {
+        if (Time.time > nextScore && isBossPhase == false && playerDead == false)
+        {
             nextScore = Time.time + scoreRate;
             score += 1;
-            print(score);
-            if(score%20 == 0){
+            // print(score);
+            if (score % 20 == 0)
+            {
                 changePhase();
             }
         }
     }
 
     //Reset scene when this is called.
-    public void GameOver(){
+    public void GameOver()
+    {
         LeaderboardManager.isGameOver = true;
         isBossPhase = false;
         gameEnded = true;
@@ -56,41 +61,51 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadLeaderboard());
     }
 
-    IEnumerator LoadLeaderboard() {
+    IEnumerator LoadLeaderboard()
+    {
         yield return new WaitForSeconds(4.0f);
         SceneManager.LoadScene("LeaderboardScene");
     }
 
-    void Awake() {
-        if (instance == null) {
+    void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
-        } 
+        }
 
-        else if (instance != this) {
-            Destroy(gameObject); 
+        else if (instance != this)
+        {
+            Destroy(gameObject);
         }
     }
 
-    public void AddPoints(int scoreToAdd){
-        if (!playerDead) {
+    public void AddPoints(int scoreToAdd)
+    {
+        if (!playerDead)
+        {
             Debug.Log(playerDead);
             score += scoreToAdd;
         }
     }
 
-    public int GetPoints(){
+    public int GetPoints()
+    {
         return score;
     }
 
-    public void changePhase(){
+    public void changePhase()
+    {
         isBossPhase = !isBossPhase;
-        if(isBossPhase){
+        if (isBossPhase)
+        {
             enemySpawner.SpawnBoss();
         }
     }
 
     //Return true if in boss phase, else turn false if in normal phase.
-    public static bool getIsBossPhase(){
+    public static bool getIsBossPhase()
+    {
         return isBossPhase;
     }
 }
