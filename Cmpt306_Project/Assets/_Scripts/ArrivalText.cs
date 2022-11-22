@@ -20,7 +20,7 @@ public class ArrivalText : MonoBehaviour
     }
 
     IEnumerator done() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.25f);
         bossCanvas.SetActive(false);
     }
 
