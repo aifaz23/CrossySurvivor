@@ -92,20 +92,26 @@ public class GunSwitching : MonoBehaviour
     }
     private void switchGuns(){
         if (Input.GetAxis("Mouse ScrollWheel") > 0f ) // forward
-        {
-            currentGun++;
-            if(currentGun>4){
-                currentGun=1;
+        {   
+            int newGun = currentGun+1;
+            while(!gunLoadout.Contains(newGun)){
+                newGun++;
+                if(newGun>4){
+                    newGun=1;
+                }
             }
-            initiaiteNewGun(currentGun);
+            initiaiteNewGun(newGun);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f ) // backwards
         {
-            currentGun--;
-            if(currentGun<1){
-                currentGun=4;
+            int newGun = currentGun-1;
+            while(!gunLoadout.Contains(newGun)){
+                newGun--;
+                if(newGun<1){
+                    newGun=1;
+                }
             }
-            initiaiteNewGun(currentGun);
+            initiaiteNewGun(newGun);
         }
         if (Input.GetKey(KeyCode.Alpha1) && currentGun!=1 && gunLoadout.Contains(1)){
             initiaiteNewGun(1);
