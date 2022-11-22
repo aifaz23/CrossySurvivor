@@ -33,19 +33,19 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W)){
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             distanceTravelled = (int)transform.position.z;
-            if(transform.position.x>17){
+            if(transform.position.x>7){
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             }
-            else if(transform.position.x<-17){
+            else if(transform.position.x<-7){
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             }
         }
         if (Input.GetKey(KeyCode.S)) {
             transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
-            if(transform.position.x>17){
+            if(transform.position.x>7){
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             }
-            else if(transform.position.x<-17){
+            else if(transform.position.x<-7){
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             }
         }
@@ -55,6 +55,14 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.A)) _rotation = Vector3.down; 
         else _rotation = Vector3.zero; 
         transform.Rotate(_rotation * rotateSpeed * Time.deltaTime); 
+
+        //Kill player if too far ahead or behind
+        Vector3 cameraPosition = GameManager.instance.camera.transform.position;
+        if(cameraPosition.z>transform.position.z+1){
+            kill();
+        }else if(cameraPosition.z<(transform.position.z-16.0f)){
+            kill();
+        }
 
     }
   
