@@ -5,12 +5,13 @@ using UnityEngine;
 public class PistolGun : MonoBehaviour
 {
     [SerializeField] private GameObject projectile; 
-    [SerializeField] private float fireRate = 1.0f; 
+    [SerializeField] private float fireRate = 0.0f; 
     private float fireTime; 
     [SerializeField] public float baseDamage = 40.0f;
 
     void start(){
         baseDamage = 40.0f;
+        
     }
     void Update() {
         Shoot(); 

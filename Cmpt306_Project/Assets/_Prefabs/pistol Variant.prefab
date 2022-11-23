@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100004, guid: c1232b0a1b78ddf44bd877453fb7a84c, type: 3}
       propertyPath: m_Name
-      value: pistol
+      value: pistol Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: c1232b0a1b78ddf44bd877453fb7a84c, type: 3}
       propertyPath: m_TagString
@@ -95,5 +95,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 7194790532775940874, guid: b4ff9292485f5f4468b053f64fa6f7d3, type: 3}
-  fireRate: 1
-  damages: 100
+  fireRate: 0.25
+  baseDamage: 40

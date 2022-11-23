@@ -17,8 +17,6 @@ public class Enemy3 : MonoBehaviour
     private float fireTime;
     [SerializeField] public float projectileDamage = 8;
 
-    public GameObject healthPrefab;
-    public GameObject weaponPrefab;
     void Start()
     {
         if (GameManager.instance.player != null)

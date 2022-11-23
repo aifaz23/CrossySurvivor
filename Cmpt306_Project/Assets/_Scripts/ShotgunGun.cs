@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShotgunGun : MonoBehaviour
 {
     [SerializeField] private GameObject projectile; 
-    [SerializeField] private float fireRate = 1.0f; 
+    [SerializeField] private float fireRate = 111.0f; 
     private float fireTime; 
     [SerializeField] public float baseDamage = 20.0f;
 
