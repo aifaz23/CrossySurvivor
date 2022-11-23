@@ -15,10 +15,7 @@ public class GunSwitching : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gunLoadout.Add(1); 
-        gunLoadout.Add(2); 
-        gunLoadout.Add(3); 
-        gunLoadout.Add(4); 
+        gunLoadout.Add(1);
         currentGunObject = Instantiate(pistol, transform.position, transform.rotation);  
         currentGunObject.transform.parent = GameObject.Find("GunSwitcher").transform;
         currentGun=1;
