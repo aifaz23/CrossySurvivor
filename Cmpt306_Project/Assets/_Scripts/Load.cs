@@ -11,11 +11,9 @@ public class Load : MonoBehaviour
 
     void Update() {
         if (GameManager.gameEnded) {
-            Debug.Log("should be enabled");
             restartButton.interactable = true;
         }
         else {
-            Debug.Log("should be disabled");
             restartButton.interactable = false;
             restartButton.GetComponentInChildren<TextMeshProUGUI>().text = "<----";
         }

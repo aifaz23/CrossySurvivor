@@ -26,7 +26,7 @@ public class Enemy3 : MonoBehaviour
             Vector3 playerPosition = GameManager.instance.player.transform.position;
             if (GameManager.instance.player)
             { //null reference check
-                if (transform.position.x >= 12)
+                if (transform.position.x >= 1)
                 {
                     moveLeft = true;
                 }
@@ -38,7 +38,8 @@ public class Enemy3 : MonoBehaviour
     {
         Shoot();
         Movement();
-        if (transform.position.x < -15 || transform.position.x > 15)
+        float width = (1/ (Camera.main.WorldToViewportPoint(new Vector3(1,1,0)).x - .5f))/2;
+        if (transform.position.x < Camera.main.transform.position.x -width-2 || transform.position.x > Camera.main.transform.position.x +width+2)
         {
             Destroy(this.gameObject);
         }

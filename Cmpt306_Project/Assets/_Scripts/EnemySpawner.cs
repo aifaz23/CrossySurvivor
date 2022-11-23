@@ -10,7 +10,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject bossPrefab;
     [SerializeField] private float spawnRate = 10f;
-    private float spawnTimer; 
+    private float spawnTimer;
+
 
     // Update is called once per frame
     void Update()
@@ -18,18 +19,20 @@ public class EnemySpawner : MonoBehaviour
         //Only spawn normal enemies when in normal phase(not boss phase)
         if(!GameManager.getIsBossPhase()){
             SpawnEnemy();
+        }else{
+            spawnTimer = Time.time + spawnRate;
         }
     }
 
     private void SpawnEnemy() {
         if (Time.time > spawnTimer) {
-           
+            float width = (1/ (Camera.main.WorldToViewportPoint(new Vector3(1,1,0)).x - .5f))/2;
             Vector3 cameraPosition = GameManager.instance.camera.transform.position;
-            int newX = 13;
+            int newX = (int)width;
             int leftOrRight = (Random.Range(0,2));
-            int newZ = Random.Range(15,25);
+            int newZ = 10;
             if(leftOrRight==1){
-                newX = -13;
+                newX = (int)-width;
             }
 
             int randomEnemy = Random.Range(0, 3);
@@ -42,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnBoss(){
         Vector3 cameraPosition = GameManager.instance.camera.transform.position;
-        Vector3 bossLocation = new Vector3(cameraPosition.x,1,cameraPosition.z+15);
+        Vector3 bossLocation = new Vector3(cameraPosition.x,1,cameraPosition.z+10);
         Instantiate(bossPrefab, bossLocation, transform.rotation);
     }
 }
