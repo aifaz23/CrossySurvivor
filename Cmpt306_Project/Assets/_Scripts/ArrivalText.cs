@@ -11,7 +11,7 @@ public class ArrivalText : MonoBehaviour
 
     IEnumerator blinking() {
         while (true)
-        {
+        { 
             text.enabled = true;
             yield return new WaitForSeconds(0.45f);
             text.enabled = false;
