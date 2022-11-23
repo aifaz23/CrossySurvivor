@@ -16,13 +16,12 @@ public class Player : MonoBehaviour
     public float speedBuffTime;
     private bool shieldBuff = false;
     public float shieldBuffTime;
-
-    public HealthBar healthBar;
     
     void Start(){
         distanceTravelled = 0;
         health = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        
+        
     }
     // Update is called once per frame
     void Update()
@@ -33,6 +32,8 @@ public class Player : MonoBehaviour
         if (Time.time > shieldBuffTime && shieldBuff){
             shieldBuff=false;
         }
+        GameObject.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth(maxHealth);
+        GameObject.Find("HealthBar").GetComponent<HealthBar>().SetHealth(health);
         MovePlayer();
     }
 
@@ -85,7 +86,6 @@ public class Player : MonoBehaviour
         if(!shieldBuff){
             health -= damage; 
         }
-        healthBar.SetHealth(health);
         if (health <= 0) {
             kill();          
         }
@@ -93,6 +93,7 @@ public class Player : MonoBehaviour
 
     public void kill () {
         health = 0; 
+        GameObject.Find("HealthBar").GetComponent<HealthBar>().SetHealth(health);
         if (health <= 0) {
             Destroy(this.gameObject);         
             GameManager.instance.GameOver(); 
