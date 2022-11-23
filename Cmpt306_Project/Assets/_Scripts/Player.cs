@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
         //Kill player if too far ahead or behind
         Vector3 cameraPosition = GameManager.instance.camera.transform.position;
-        if(cameraPosition.z>transform.position.z+1){
+        if(cameraPosition.z>(transform.position.z+15)){
             kill();
         }else if(cameraPosition.z<(transform.position.z-16.0f)){
             kill();
