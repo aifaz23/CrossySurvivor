@@ -116,7 +116,7 @@ MonoBehaviour:
   damageToPlayer: 90
   damageRate: 0.2
   damageTime: 0
-  BossDrops: {fileID: 8549390617051480634, guid: 967f1db511349244f877d9affbd52286, type: 3}
+  BossDrops: {fileID: 6300131185324888980, guid: 1852fb66187a2bf489abbe2e40edd908, type: 3}
   projectile: {fileID: 7272347684177601763, guid: ed0a6f708a18b694c869780b682da283, type: 3}
   fireRate: 5
   projectileDamage: 10
