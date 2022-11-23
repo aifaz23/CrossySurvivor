@@ -93,6 +93,7 @@ public class Player : MonoBehaviour
 
     public void kill () {
         health = 0; 
+        GameObject.Find("HealthBar").GetComponent<HealthBar>().SetHealth(health);
         if (health <= 0) {
             Destroy(this.gameObject);         
             GameManager.instance.GameOver(); 
