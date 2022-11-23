@@ -17,8 +17,12 @@ public class Player : MonoBehaviour
     private bool shieldBuff = false;
     public float shieldBuffTime;
 
+    public HealthBar healthBar;
+    
     void Start(){
         distanceTravelled = 0;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
     // Update is called once per frame
     void Update()
@@ -80,6 +84,7 @@ public class Player : MonoBehaviour
         if(!shieldBuff){
             health -= damage; 
         }
+        healthBar.SetHealth(health);
         if (health <= 0) {
             kill();          
         }
