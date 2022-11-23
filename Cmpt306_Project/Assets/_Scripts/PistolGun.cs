@@ -13,7 +13,6 @@ public class PistolGun : MonoBehaviour
         baseDamage = 40.0f;
     }
     void Update() {
-
         Shoot(); 
     }
 
@@ -25,7 +24,7 @@ public class PistolGun : MonoBehaviour
         Vector3 eulerRotation = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(0, eulerRotation.y,eulerRotation.z);
         if(Input.GetMouseButtonDown(0) && Time.time >= fireTime) {
-            
+             
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);    
             bullet.GetComponent<Projectile>().damage=baseDamage;  
             bullet.GetComponent<Projectile>().lifeTime=3.0f; 

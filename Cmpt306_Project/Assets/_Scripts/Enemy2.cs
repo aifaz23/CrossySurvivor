@@ -65,19 +65,7 @@ public class Enemy2 : MonoBehaviour
         {
             Destroy(this.gameObject);
             // either 0 or 1
-            int dropChance = (Random.Range(0, 2));
-            if (dropChance == 1)
-            {
-                int drop = (Random.Range(0, 2));
-                if (drop == 1)
-                {
-                    GameObject healthpack = Instantiate(healthPrefab, transform.position, transform.rotation);
-                }
-                else
-                {
-                    GameObject weapondrop = Instantiate(weaponPrefab, transform.position, transform.rotation);
-                }
-            }
+            GameManager.instance.summonDrop(transform.position);
         }
     }
 

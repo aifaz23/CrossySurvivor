@@ -43,23 +43,24 @@ public class Player : MonoBehaviour
 
     //Player Input Controls
     private void MovePlayer() {
+        float width = (1/ (Camera.main.WorldToViewportPoint(new Vector3(1,1,0)).x - .5f))/2;
         //Forward & Backward Movement 
         if (Input.GetKey(KeyCode.W)){
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             distanceTravelled = (int)transform.position.z;
-            if(transform.position.x>11f){
+            if(transform.position.x>width){
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             }
-            else if(transform.position.x<-11f){
+            else if(transform.position.x<-width){
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             }
         }
         if (Input.GetKey(KeyCode.S)) {
             transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
-            if(transform.position.x>11f){
+            if(transform.position.x>width){
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             }
-            else if(transform.position.x<-11f){
+            else if(transform.position.x<-width){
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             }
         }
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
         Vector3 cameraPosition = GameManager.instance.camera.transform.position;
         if(cameraPosition.z>(transform.position.z+7.0f)){
             kill();
-        }else if(cameraPosition.z<(transform.position.z-13.0f)){
+        }else if(cameraPosition.z<(transform.position.z-7.0f)){
             kill();
         }
 

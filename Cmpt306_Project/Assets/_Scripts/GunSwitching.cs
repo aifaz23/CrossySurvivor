@@ -16,6 +16,9 @@ public class GunSwitching : MonoBehaviour
     void Start()
     {
         gunLoadout.Add(1); 
+        gunLoadout.Add(2); 
+        gunLoadout.Add(3); 
+        gunLoadout.Add(4); 
         currentGunObject = Instantiate(pistol, transform.position, transform.rotation);  
         currentGunObject.transform.parent = GameObject.Find("GunSwitcher").transform;
         currentGun=1;
@@ -108,7 +111,7 @@ public class GunSwitching : MonoBehaviour
             while(!gunLoadout.Contains(newGun)){
                 newGun--;
                 if(newGun<1){
-                    newGun=1;
+                    newGun=4;
                 }
             }
             initiaiteNewGun(newGun);
