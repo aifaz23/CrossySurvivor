@@ -2272,7 +2272,7 @@ MonoBehaviour:
   text: {fileID: 833615106}
   arriveText: {fileID: 1402728437}
   enemySpawner: {fileID: 7870330268581617522, guid: 34cae96141fc5489eb401256eabbdbe4, type: 3}
-  normalEnemyDrop: {fileID: 0}
+  normalEnemyDrop: {fileID: 5433767509171115136, guid: 4a06adc96b8e7244f8fc94bb8cbb7364, type: 3}
   gameOver: {fileID: 161101325}
   bossCanvas: {fileID: 468235580}
   pauseMenu: {fileID: 974910410}

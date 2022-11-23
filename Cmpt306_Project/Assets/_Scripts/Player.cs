@@ -43,19 +43,19 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W)){
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             distanceTravelled = (int)transform.position.z;
-            if(transform.position.x>7){
+            if(transform.position.x>11){
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             }
-            else if(transform.position.x<-7){
+            else if(transform.position.x<-11){
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             }
         }
         if (Input.GetKey(KeyCode.S)) {
             transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
-            if(transform.position.x>7){
+            if(transform.position.x>11){
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             }
-            else if(transform.position.x<-7){
+            else if(transform.position.x<-11){
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             }
         }
