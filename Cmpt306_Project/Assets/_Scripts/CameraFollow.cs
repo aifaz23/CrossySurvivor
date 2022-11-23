@@ -5,10 +5,12 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    [SerializeField] private float moveSpeed;
+    public float moveSpeed;
+    [SerializeField] private GameObject player;
 
     Camera cam;
     [SerializeField] public Vector3 viewPos;
+
 
     public Vector3 offset;
 
@@ -22,19 +24,19 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         // TODO work on camera keep up
-        // viewPos = cam.WorldToViewportPoint(target.position);
+        // viewPos = cam.WorldToViewportPoint(player.transform.position);
         // print(viewPos.y);
         // if (viewPos.y > 0.5f)
         // {
         //     print("Ahead");
-        //     moveSpeed = 7.0f;
-        //     transform.position = Vector3.Lerp(transform.position, target.position + offset, moveSpeed * Time.deltaTime);
+        //     moveSpeed = 5.0f;
+        //     // transform.position = Vector3.Lerp(transform.position, target.position + offset, moveSpeed * Time.deltaTime);
         // }
         // else if (viewPos.y <= 50)
         // {
-        //     // print("Behind");
-        //     moveSpeed = 2.5f;
-        //     transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, target);
+        //     print("Behind");
+        //     moveSpeed = 2.0f;
+        //     // transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, target);
         // }
 
         //Only move camera forward when in normal phase(not boss phase)
@@ -47,20 +49,5 @@ public class CameraFollow : MonoBehaviour
     void Movement()
     {
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, target);
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject go in gos)
-        {
-            float z = go.GetComponent<Player>().transform.position.z;
-            if(viewPos.z>z+16.0f){
-            go.GetComponent<Player>().kill();
-            }
-            else if(viewPos.z<(z-16.0f)){
-            go.GetComponent<Player>().kill();
-            }
-            // go.GetComponent<Gun>().damages += increasedamage;
-        }
-        
-        
     }
 }

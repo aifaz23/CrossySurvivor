@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -20,11 +21,13 @@ public class Enemy : MonoBehaviour
    
     
     void Start () {
-        Vector3 playerPosition = GameManager.instance.player.transform.position;
-        if (GameManager.instance.player) { //null reference check
-            if(transform.position.x>=12){
-                moveLeft=true;
-            }             
+        if (GameManager.instance.player != null) {
+            Vector3 playerPosition = GameManager.instance.player.transform.position;
+            if (GameManager.instance.player) { //null reference check
+                if(transform.position.x>=12){
+                    moveLeft=true;
+                }             
+            }
         }
     }
     // Update is called once per frame
