@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d757f2b29a588d408d39e8a662e4197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefabList:
+  - {fileID: 94760981605500863, guid: 57169e9267c4d441db95438e7b22eb71, type: 3}
+  - {fileID: 185591192492390594, guid: 88f57d0505ab94dd7aac1b39a682b4a5, type: 3}
+  - {fileID: 203690657019173541, guid: b03f4046bb8734cd2bd4d889b8e802d6, type: 3}
   enemyPrefab: {fileID: 1686762456304936252, guid: 681ef295841003b4c8767a463e63c6d1, type: 3}
   bossPrefab: {fileID: 1019755720050726841, guid: b38e698f0358b5a419ba1bc990c70a10, type: 3}
   spawnRate: 10

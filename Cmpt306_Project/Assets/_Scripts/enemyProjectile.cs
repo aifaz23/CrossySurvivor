@@ -6,7 +6,7 @@ public class enemyProjectile : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 5.0f;
     [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] public float damage = 2.0f;
+    [SerializeField] public float damage;
 
 
     // Start is called before the first frame update
@@ -31,6 +31,33 @@ public class enemyProjectile : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
+            switch (transform.parent.tag)
+            {
+                case "Enemy1":
+                    {
+                        damage = transform.parent.GetComponent<Enemy1>().projectileDamage;
+                        break;
+                    }
+                case "Enemy2":
+                    {
+                        damage = transform.parent.GetComponent<Enemy2>().projectileDamage;
+                        break;
+                    }
+                case "Enemy3":
+                    {
+                        damage = transform.parent.GetComponent<Enemy3>().projectileDamage;
+                        break;
+                    }
+                case "Boss":
+                    {
+                        damage = transform.parent.GetComponent<Boss>().projectileDamage;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
             other.GetComponent<Player>().TakeDamage(damage);
             Destroy(this.gameObject);
         }

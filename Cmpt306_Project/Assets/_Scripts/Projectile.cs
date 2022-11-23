@@ -21,27 +21,37 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        MoveProjectile(); 
-    }
-    
-    private void MoveProjectile() {
-        
-        transform.position += transform.forward * moveSpeed * Time.deltaTime; 
-        
+
+        MoveProjectile();
     }
 
-    void OnTriggerEnter(Collider other) {
-   
+    private void MoveProjectile()
+    {
+        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+    }
 
-
-        if (other.transform.tag == "Enemy"){
-            other.GetComponent<Enemy>().TakeDamage(damage); 
-            Destroy(this.gameObject); 
-        }else if(other.transform.tag == "Boss"){
-            other.GetComponent<Boss>().TakeDamage(damage); 
-            Destroy(this.gameObject); 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Enemy1")
+        {
+            other.GetComponent<Enemy1>().TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        else if (other.transform.tag == "Enemy2")
+        {
+            other.GetComponent<Enemy2>().TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        else if (other.transform.tag == "Enemy3")
+        {
+            other.GetComponent<Enemy3>().TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+        else if (other.transform.tag == "Boss")
+        {
+            other.GetComponent<Boss>().TakeDamage(damage);
+            Destroy(this.gameObject);
         }
     }
-    
+
 }
