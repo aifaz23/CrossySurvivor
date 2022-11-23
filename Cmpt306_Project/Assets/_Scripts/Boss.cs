@@ -61,8 +61,8 @@ public class Boss : MonoBehaviour
     }
 
     private void Fire(){
-        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, angle, 0));
-        GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, angle + 180f, 0));
+        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, angle, 0), this.transform);
+        GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, angle + 180f, 0), this.transform);
         angle +=10f;
         if(angle >=360f){
             angle = 0f;
@@ -95,7 +95,7 @@ public class Boss : MonoBehaviour
             //Shoot in all angles in increments
             float currentAngle = 0f;
             while(currentAngle<360){
-                GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, currentAngle, 0));
+                GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, currentAngle, 0), this.transform);
                 currentAngle+=10;
             }
             // bullet.GetComponent<Projectile>().damage = projectileDamage;

@@ -72,14 +72,10 @@ public class Enemy3 : MonoBehaviour
                 if (drop == 1)
                 {
                     GameObject healthpack = Instantiate(healthPrefab, transform.position, transform.rotation);
-                    healthpack.GetComponent<healthDrop>().health = (Random.Range(10, 100));
                 }
                 else
                 {
                     GameObject weapondrop = Instantiate(weaponPrefab, transform.position, transform.rotation);
-                    weapondrop.GetComponent<GunDrop>().damage = (Random.Range(1, 7));
-                    // rotate on its side
-                    weapondrop.transform.eulerAngles = new Vector3(-1, -200, -90);
                 }
             }
         }
