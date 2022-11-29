@@ -87,7 +87,7 @@ public class GunSwitching : MonoBehaviour
                 gun= Random.Range(1,5);
             }
             gunLoadout.Add(gun);
-
+            GameObject.Find("HotBarCanvas").GetComponent<Hotbar>().updateHotbar();
         }
     }
     private void switchGuns(){
@@ -126,6 +126,12 @@ public class GunSwitching : MonoBehaviour
             initiaiteNewGun(4);
         }
         currentGunObject.transform.parent = GameObject.Find("GunSwitcher").transform;
+
+    }
+    public void hotBarSwitch(int gun){
+        if (currentGun!=gun && gunLoadout.Contains(gun)){
+            initiaiteNewGun(gun);
+        }
 
     }
 }
