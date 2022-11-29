@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
 
             int randomEnemy = Random.Range(0, 3);
    
-            Vector3 randomLocation = new Vector3(cameraPosition.x +newX,1.5f,cameraPosition.z+newZ);
+            Vector3 randomLocation = new Vector3(cameraPosition.x +newX,1,cameraPosition.z+newZ);
             Instantiate(enemyPrefabList[randomEnemy], randomLocation, transform.rotation);
             spawnTimer = Time.time + spawnRate;
         }

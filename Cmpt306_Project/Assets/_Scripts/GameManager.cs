@@ -46,13 +46,13 @@ public class GameManager : MonoBehaviour
             score += 1;
             counter += 1;
             print(score);
-            if(counter == 47) {
+            if(counter == 17) {
                 bossCanvas.SetActive(true);
                 ArrivalText script = arriveText.GetComponent<ArrivalText>();
                 script.blink();
             }
 
-            if(score%50 == 0){
+            if(score%20 == 0){
                 counter = 0;
                 changePhase();
             }
