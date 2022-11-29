@@ -12,9 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] public float maxHealth = 100.0f; 
     [SerializeField] public float health = 100.0f; 
     private int distanceTravelled;
-    private bool speedBuff = false;
+    public bool speedBuff = false;
     public float speedBuffTime;
-    private bool shieldBuff = false;
+    public bool shieldBuff = false;
     public float shieldBuffTime;
     
     void Start(){

@@ -8,6 +8,10 @@ TagManager:
   - Drop
   - Gun
   - Boss
+  - Enemy3
+  - Enemy1
+  - Enemy2
+  - buffCanvas
   layers:
   - Default
   - TransparentFX

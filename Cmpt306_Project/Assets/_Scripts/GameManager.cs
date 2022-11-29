@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public NormalEnemyDrop normalEnemyDrop;
     public GameObject gameOver;
     public GameObject bossCanvas;
+    public GameObject buffCanvas;
     public GameObject pauseMenu;
     public static bool gameEnded = false;
 
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(false);
         bossCanvas.SetActive(false);
         pauseMenu.SetActive(true);
+        buffCanvas.SetActive(true);
         playerDead = false;
         score = 0;
     }
