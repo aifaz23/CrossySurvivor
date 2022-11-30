@@ -5,10 +5,10 @@ using UnityEngine;
 public class Enemy3 : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 0.25f;
-    [SerializeField] private float health = 99.0f;
+    [SerializeField] public float health = 99.0f;
 
-    [SerializeField] private float damageToPlayer = 20.0f;
-    [SerializeField] private float damageRate = 0.2f;
+    [SerializeField] public float damageToPlayer = 20.0f;
+    [SerializeField] public float damageRate = 0.2f;
     [SerializeField] private float damageTime;
     private bool moveLeft = false;
 
@@ -41,6 +41,12 @@ public class Enemy3 : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void resetStats() {
+        health = 99.0f;
+        projectileDamage = 8;
+        damageToPlayer = 20.0f;
     }
 
     private void Movement()

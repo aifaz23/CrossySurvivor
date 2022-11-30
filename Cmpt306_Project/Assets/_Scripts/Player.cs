@@ -32,6 +32,13 @@ public class Player : MonoBehaviour
         if (Time.time > shieldBuffTime && shieldBuff){
             shieldBuff=false;
         }
+        if (health <= 10.0f) {
+            GameManager.scaleDown = true;
+        }
+        if (health > 10.0f) {
+            GameManager.scaleDown = false;
+        }
+
         GameObject.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth(maxHealth);
         GameObject.Find("HealthBar").GetComponent<HealthBar>().SetHealth(health);
         MovePlayer();
@@ -48,6 +55,7 @@ public class Player : MonoBehaviour
         //Forward & Backward Movement 
         if (Input.GetKey(KeyCode.W)){
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
+            FindObjectOfType<AudioManager>().Play("Footstep");    
             distanceTravelled = (int)transform.position.z;
             if(transform.position.x>width){
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
@@ -58,6 +66,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S)) {
             transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
+            FindObjectOfType<AudioManager>().Play("Footstep");    
             if(transform.position.x>width){
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             }
@@ -95,6 +104,7 @@ public class Player : MonoBehaviour
         health = 0; 
         GameObject.Find("HealthBar").GetComponent<HealthBar>().SetHealth(health);
         if (health <= 0) {
+            FindObjectOfType<AudioManager>().Play("GameOver");
             Destroy(this.gameObject);         
             GameManager.instance.GameOver(); 
             GameManager.instance.playerDead = true;      
@@ -118,6 +128,7 @@ public class Player : MonoBehaviour
         speedBuffTime = Time.time + (Random.Range(1f,5f));
         speedBuff=true;
     }
+    
     public void getShieldBuff()
     {
         shieldBuffTime = Time.time + (Random.Range(1f,5f));

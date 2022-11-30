@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4112017558989089916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2949741175922489855}
+  - component: {fileID: 2706040184500405428}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2949741175922489855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112017558989089916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2706040184500405428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112017558989089916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd4fb80e12ec5a94b832d016f52d6840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioArray:
+  - name: BackgroundMusic
+    loop: 1
+    clip: {fileID: 8300000, guid: 9916203d0abbd8941a01d90c2fd6124a, type: 3}
+    volume: 0.035
+    pitch: 1
+    source: {fileID: 0}
+  - name: ButtonClick
+    loop: 0
+    clip: {fileID: 8300000, guid: 422c32391dc5f7a4db12b1696d2ec952, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: ButtonHover
+    loop: 0
+    clip: {fileID: 8300000, guid: c27511ccd235ae34f9f349ecb838f1f8, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+  - name: GameOver
+    loop: 0
+    clip: {fileID: 8300000, guid: 75e5a366071da19499974916dac965f9, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Pistol
+    loop: 0
+    clip: {fileID: 8300000, guid: 2b238da2b36756c4ea9a76c1557115b2, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Sniper
+    loop: 0
+    clip: {fileID: 8300000, guid: c48448fdfd8307d4b89df7f663cf2715, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shotgun
+    loop: 0
+    clip: {fileID: 8300000, guid: c9d2da323c16e9a4ba2f1f938cba21a2, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Uzi
+    loop: 0
+    clip: {fileID: 8300000, guid: 0c82e73e00f5f3640b171dba359d13ca, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Footstep
+    loop: 0
+    clip: {fileID: 8300000, guid: 23129af38e8cc564994bc38b0cbc61c4, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
