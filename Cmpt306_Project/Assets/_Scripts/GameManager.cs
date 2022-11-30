@@ -21,15 +21,22 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI text;
     public TextMeshProUGUI arriveText;
     public EnemySpawner enemySpawner;
+    public enemyProjectile enemyProj;
     public NormalEnemyDrop normalEnemyDrop;
     public GameObject gameOver;
+    public GameObject Enemy1;
+    public GameObject Enemy2;
+    public GameObject Enemy3;
     public GameObject bossCanvas;
     public GameObject pauseMenu;
+    public TextMeshProUGUI gameScoreText;
     public static bool gameEnded = false;
+    public static bool scaleDown = false;
 
     void Start()
     {
         gameEnded = false;
+        scaleDown = false;
         isBossPhase = false;
         gameOver.SetActive(false);
         bossCanvas.SetActive(false);
@@ -45,6 +52,7 @@ public class GameManager : MonoBehaviour
             nextScore = Time.time + scoreRate;
             score += 1;
             counter += 1;
+            gameScoreText.text = "Score: " + score.ToString();
             print(score);
             if(counter == 17) {
                 bossCanvas.SetActive(true);
@@ -52,7 +60,7 @@ public class GameManager : MonoBehaviour
                 script.blink();
             }
 
-            if(score%20 == 0){
+            if(score%999999 == 0){
                 counter = 0;
                 changePhase();
             }
@@ -70,13 +78,21 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(true);
         BlinkText script = text.GetComponent<BlinkText>();
         script.blink();
+        Enemy1.GetComponent<Enemy1>().resetStats();
+        Enemy2.GetComponent<Enemy2>().resetStats();
+        Enemy3.GetComponent<Enemy3>().resetStats();
         StartCoroutine(LoadLeaderboard());
     }
 
     IEnumerator LoadLeaderboard()
     {
         yield return new WaitForSeconds(4.0f);
+        FindObjectOfType<AudioManager>().changeVolume("BackgroundMusic", 0.035f);
         SceneManager.LoadScene("LeaderboardScene");
+    }
+
+    public void turnOn() {
+        scaleDown = true;
     }
 
     void Awake()

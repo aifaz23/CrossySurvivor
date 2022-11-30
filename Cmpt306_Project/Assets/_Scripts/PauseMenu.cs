@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -9,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
     public GameObject pauseButton;
+    public TextMeshProUGUI scoreText;
 
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,6 +26,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
+        scoreText.enabled = true;
+        FindObjectOfType<AudioManager>().changeVolume("BackgroundMusic", 0f);
         Time.timeScale = 1f;
         isPaused = false;
         pauseButton.SetActive(true);
@@ -41,6 +45,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause() {
         pauseMenuUI.SetActive(true);
+        scoreText.enabled = false;
+        FindObjectOfType<AudioManager>().changeVolume("BackgroundMusic", 0.035f);
         Time.timeScale = 0f;
         isPaused = true;
         pauseButton.SetActive(false);

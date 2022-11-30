@@ -20,7 +20,7 @@ public class NameMenu : MonoBehaviour
         }
         else {
             Time.timeScale = 1f;
-            // Debug.Log(playerName);
+            FindObjectOfType<AudioManager>().changeVolume("BackgroundMusic", 0f);
             SceneManager.LoadScene("GameScene");
         }
     }

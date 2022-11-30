@@ -27,7 +27,9 @@ public class UziGun : MonoBehaviour
 
         if(Input.GetMouseButton(0) && Time.time >= fireTime) {
             
-            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);    
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+            FindObjectOfType<AudioManager>().Play("Uzi");       
+            FindObjectOfType<AudioManager>().changeVolume("Uzi", 0.75f);       
             bullet.GetComponent<Projectile>().damage=baseDamage;
             bullet.GetComponent<Projectile>().lifeTime=1.0f;
             transform.LookAt(vector);

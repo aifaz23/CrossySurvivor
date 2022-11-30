@@ -118,6 +118,4 @@ MonoBehaviour:
   damageTime: 0
   projectile: {fileID: 7272347684177601763, guid: ed0a6f708a18b694c869780b682da283, type: 3}
   fireRate: 1
-  projectileDamage: 5
-  healthPrefab: {fileID: 6303898703726418611, guid: 2171ca30a3e9fb1408a17219fdc7e313, type: 3}
-  weaponPrefab: {fileID: 6452714222216868929, guid: 095270a899e30e144ac32ade54f9ced3, type: 3}
+  projectileDamage: 8

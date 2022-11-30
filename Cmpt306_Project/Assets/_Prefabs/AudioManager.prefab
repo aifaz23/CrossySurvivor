@@ -69,3 +69,33 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
+  - name: Pistol
+    loop: 0
+    clip: {fileID: 8300000, guid: 2b238da2b36756c4ea9a76c1557115b2, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Sniper
+    loop: 0
+    clip: {fileID: 8300000, guid: c48448fdfd8307d4b89df7f663cf2715, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shotgun
+    loop: 0
+    clip: {fileID: 8300000, guid: c9d2da323c16e9a4ba2f1f938cba21a2, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Uzi
+    loop: 0
+    clip: {fileID: 8300000, guid: 0c82e73e00f5f3640b171dba359d13ca, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Footstep
+    loop: 0
+    clip: {fileID: 8300000, guid: 23129af38e8cc564994bc38b0cbc61c4, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
