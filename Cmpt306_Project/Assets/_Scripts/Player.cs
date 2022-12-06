@@ -57,29 +57,32 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             FindObjectOfType<AudioManager>().Play("Footstep");    
             distanceTravelled = (int)transform.position.z;
-            if(transform.position.x>width){
-                transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
-            }
-            else if(transform.position.x<-width){
-                transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
-            }
         }
         if (Input.GetKey(Binds.backward)) {
             transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             FindObjectOfType<AudioManager>().Play("Footstep");    
+        }
+        if (Input.GetKey(Binds.right)) {
+            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime); 
+            FindObjectOfType<AudioManager>().Play("Footstep");    
             if(transform.position.x>width){
-                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime); 
             }
             else if(transform.position.x<-width){
-                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime); 
             }
         }
-
-        //Left and Right Rotation
-        if (Input.GetKey(Binds.right)) _rotation = Vector3.up;
-        else if (Input.GetKey(Binds.left)) _rotation = Vector3.down; 
-        else _rotation = Vector3.zero; 
-        transform.Rotate(_rotation * rotateSpeed * Time.deltaTime); 
+        if (Input.GetKey(Binds.left)) {
+            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime); 
+            FindObjectOfType<AudioManager>().Play("Footstep");    
+            if(transform.position.x>width){
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime); 
+            }
+            else if(transform.position.x<-width){
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime); 
+            }
+        }
+     
 
         //Kill player if too far ahead or behind
         Vector3 cameraPosition = GameManager.instance.camera.transform.position;
