@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public GameObject hotbarCanvas;
     public static bool gameEnded = false;
     public static bool scaleDown = false;
+    public int bossEncounterRate = 30;
 
     void Start()
     {
@@ -58,13 +59,13 @@ public class GameManager : MonoBehaviour
             counter += 1;
             gameScoreText.text = "Score: " + score.ToString();
             print(score);
-            if(counter == 17) {
+            if(counter == bossEncounterRate-3) {
                 bossCanvas.SetActive(true);
                 ArrivalText script = arriveText.GetComponent<ArrivalText>();
                 script.blink();
             }
 
-            if(score%999999 == 0){
+            if(score%bossEncounterRate == 0){
                 counter = 0;
                 changePhase();
             }
