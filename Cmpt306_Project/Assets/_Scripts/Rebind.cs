@@ -5,40 +5,32 @@ using UnityEngine.UI;
 
 public class Rebind : MonoBehaviour
 {
-    [SerializeField] private KeyCode forward = KeyCode.W; 
-    [SerializeField] private KeyCode left = KeyCode.A; 
-    [SerializeField] private KeyCode right = KeyCode.D; 
-    [SerializeField] private KeyCode backward = KeyCode.S; 
-    [SerializeField] private KeyCode weaponLoadout1 = KeyCode.Alpha1; 
-    [SerializeField] private KeyCode weaponLoadout2 = KeyCode.Alpha2; 
-    [SerializeField] private KeyCode weaponLoadout3 = KeyCode.Alpha3; 
-    [SerializeField] private KeyCode weaponLoadout4 = KeyCode.Alpha4; 
     [SerializeField] private bool rebinding = false;
     [SerializeField] private string keyToRebind;
 
     private int checkValidity(KeyCode newKey){
-        if(newKey== forward){
+        if(newKey== Binds.forward){
             return -1;
         }
-        if(newKey== left){
+        if(newKey== Binds.left){
             return -1;
         }
-        if(newKey== right){
+        if(newKey== Binds.right){
             return -1;
         }
-        if(newKey== backward){
+        if(newKey== Binds.backward){
             return -1;
         }
-        if(newKey== weaponLoadout1){
+        if(newKey== Binds.weaponLoadout1){
             return -1;
         }
-        if(newKey== weaponLoadout2){
+        if(newKey== Binds.weaponLoadout2){
             return -1;
         }
-        if(newKey== weaponLoadout3){
+        if(newKey== Binds.weaponLoadout3){
             return -1;
         }
-        if(newKey== weaponLoadout4){
+        if(newKey== Binds.weaponLoadout4){
             return -1;
         }
         return 0;
@@ -54,7 +46,7 @@ public class Rebind : MonoBehaviour
                 if(checkValidity(vKey)==0){
                    transform.GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
                     transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Move Up";
-                    forward=vKey;
+                    Binds.forward=vKey;
                     rebinding=false; 
                 }
                 else{
@@ -75,7 +67,7 @@ public class Rebind : MonoBehaviour
                 if(checkValidity(vKey)==0){
                     transform.GetChild(2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
                     transform.GetChild(2).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Move Right";
-                    left=vKey;
+                    Binds.left=vKey;
                     rebinding=false;
                 }
                 else{
@@ -95,7 +87,7 @@ public class Rebind : MonoBehaviour
                 if(checkValidity(vKey)==0){
                     transform.GetChild(3).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
                     transform.GetChild(3).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Move Down";
-                    backward=vKey;
+                    Binds.backward=vKey;
                     rebinding=false;
                 }
                 else{
@@ -115,7 +107,7 @@ public class Rebind : MonoBehaviour
                 if(checkValidity(vKey)==0){
                     transform.GetChild(4).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
                     transform.GetChild(4).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Move Left";
-                    right=vKey;
+                    Binds.right=vKey;
                     rebinding=false;
                 }
                 else{
@@ -134,13 +126,13 @@ public class Rebind : MonoBehaviour
         foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))){
             if(Input.GetKey(vKey)){
                 if(checkValidity(vKey)==0){
-                    transform.GetChild(9).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
-                    transform.GetChild(9).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 1";
-                    weaponLoadout1=vKey;
+                    transform.GetChild(8).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
+                    transform.GetChild(8).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 1";
+                    Binds.weaponLoadout1=vKey;
                     rebinding=false;
                 }
                 else{
-                    transform.GetChild(9).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 1";
+                    transform.GetChild(8).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 1";
                     rebinding=false;
                 }
                 
@@ -154,13 +146,13 @@ public class Rebind : MonoBehaviour
         foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))){
             if(Input.GetKey(vKey)){
                 if(checkValidity(vKey)==0){
-                    transform.GetChild(10).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
-                    transform.GetChild(10).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 2";
-                    weaponLoadout2=vKey;
+                    transform.GetChild(9).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
+                    transform.GetChild(9).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 2";
+                    Binds.weaponLoadout2=vKey;
                     rebinding=false;
                 }
                 else{
-                    transform.GetChild(10).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 2";
+                    transform.GetChild(9).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 2";
                     rebinding=false;
                 }
                 
@@ -174,13 +166,13 @@ public class Rebind : MonoBehaviour
         foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))){
             if(Input.GetKey(vKey)){
                 if(checkValidity(vKey)==0){
-                    transform.GetChild(11).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
-                    transform.GetChild(11).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 3";
-                    weaponLoadout3=vKey;
+                    transform.GetChild(10).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
+                    transform.GetChild(10).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 3";
+                    Binds.weaponLoadout3=vKey;
                     rebinding=false;
                 }
                 else{
-                    transform.GetChild(11).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 3";
+                    transform.GetChild(10).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 3";
                     rebinding=false;
                 }
                 
@@ -194,13 +186,13 @@ public class Rebind : MonoBehaviour
         foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))){
             if(Input.GetKey(vKey)){
                 if(checkValidity(vKey)==0){
-                    transform.GetChild(12).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
-                    transform.GetChild(12).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 4";
-                    weaponLoadout4=vKey;
+                    transform.GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
+                    transform.GetChild(11).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 4";
+                    Binds.weaponLoadout4=vKey;
                     rebinding=false;
                 }
                 else{
-                    transform.GetChild(12).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 4";
+                    transform.GetChild(11).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 4";
                     rebinding=false;
                 }
                 
@@ -210,7 +202,14 @@ public class Rebind : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+(Binds.forward).ToString());
+        transform.GetChild(2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+(Binds.left).ToString());
+        transform.GetChild(3).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+(Binds.backward).ToString());
+        transform.GetChild(4).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+(Binds.right).ToString());
+        transform.GetChild(8).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+(Binds.weaponLoadout1).ToString());
+        transform.GetChild(9).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+(Binds.weaponLoadout2).ToString());
+        transform.GetChild(10).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+(Binds.weaponLoadout3).ToString());
+        transform.GetChild(11).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+(Binds.weaponLoadout4).ToString());
     }
 
     // Update is called once per frame

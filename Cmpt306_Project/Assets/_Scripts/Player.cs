@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     private void MovePlayer() {
         float width = (1/ (Camera.main.WorldToViewportPoint(new Vector3(1,1,0)).x - .5f))/2;
         //Forward & Backward Movement 
-        if (Input.GetKey(KeyCode.W)){
+        if (Input.GetKey(Binds.forward)){
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             distanceTravelled = (int)transform.position.z;
             if(transform.position.x>width){
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             }
         }
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(Binds.backward)) {
             transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             if(transform.position.x>width){
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
@@ -67,8 +67,8 @@ public class Player : MonoBehaviour
         }
 
         //Left and Right Rotation
-        if (Input.GetKey(KeyCode.D)) _rotation = Vector3.up;
-        else if (Input.GetKey(KeyCode.A)) _rotation = Vector3.down; 
+        if (Input.GetKey(Binds.right)) _rotation = Vector3.up;
+        else if (Input.GetKey(Binds.left)) _rotation = Vector3.down; 
         else _rotation = Vector3.zero; 
         transform.Rotate(_rotation * rotateSpeed * Time.deltaTime); 
 

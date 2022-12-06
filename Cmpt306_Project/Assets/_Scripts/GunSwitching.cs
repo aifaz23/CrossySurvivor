@@ -113,16 +113,16 @@ public class GunSwitching : MonoBehaviour
             }
             initiaiteNewGun(newGun);
         }
-        if (Input.GetKey(KeyCode.Alpha1) && currentGun!=1 && gunLoadout.Contains(1)){
+        if (Input.GetKey(Binds.weaponLoadout1) && currentGun!=1 && gunLoadout.Contains(1)){
             initiaiteNewGun(1);
         }
-        if (Input.GetKey(KeyCode.Alpha2) && currentGun!=2 && gunLoadout.Contains(2)){
+        if (Input.GetKey(Binds.weaponLoadout2) && currentGun!=2 && gunLoadout.Contains(2)){
             initiaiteNewGun(2);
         }
-        if (Input.GetKey(KeyCode.Alpha3) && currentGun!=3 && gunLoadout.Contains(3)){
+        if (Input.GetKey(Binds.weaponLoadout3) && currentGun!=3 && gunLoadout.Contains(3)){
             initiaiteNewGun(3);
         }
-        if (Input.GetKey(KeyCode.Alpha4) && currentGun!=4 && gunLoadout.Contains(4)){
+        if (Input.GetKey(Binds.weaponLoadout4) && currentGun!=4 && gunLoadout.Contains(4)){
             initiaiteNewGun(4);
         }
         currentGunObject.transform.parent = GameObject.Find("GunSwitcher").transform;
