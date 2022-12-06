@@ -186,7 +186,7 @@ public class Rebind : MonoBehaviour
         foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))){
             if(Input.GetKey(vKey)){
                 if(checkValidity(vKey)==0){
-                    transform.GetChild(1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
+                    transform.GetChild(11).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/WhiteVariant/"+vKey.ToString());
                     transform.GetChild(11).GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Change to weapon 4";
                     Binds.weaponLoadout4=vKey;
                     rebinding=false;
