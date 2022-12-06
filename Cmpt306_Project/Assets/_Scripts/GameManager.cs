@@ -28,8 +28,10 @@ public class GameManager : MonoBehaviour
     public GameObject Enemy2;
     public GameObject Enemy3;
     public GameObject bossCanvas;
+    public GameObject buffCanvas;
     public GameObject pauseMenu;
     public TextMeshProUGUI gameScoreText;
+    public GameObject hotbarCanvas;
     public static bool gameEnded = false;
     public static bool scaleDown = false;
 
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(false);
         bossCanvas.SetActive(false);
         pauseMenu.SetActive(true);
+        buffCanvas.SetActive(true);
+        hotbarCanvas.SetActive(true);
         playerDead = false;
         score = 0;
     }
@@ -74,6 +78,8 @@ public class GameManager : MonoBehaviour
         isBossPhase = false;
         gameEnded = true;
         pauseMenu.SetActive(false);
+        hotbarCanvas.SetActive(false);
+        buffCanvas.SetActive(false);
         scoreTxt.text = "Score: " + score.ToString();
         gameOver.SetActive(true);
         BlinkText script = text.GetComponent<BlinkText>();

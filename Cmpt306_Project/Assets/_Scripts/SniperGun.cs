@@ -24,7 +24,7 @@ public class SniperGun : MonoBehaviour
         Vector3 eulerRotation = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(0, eulerRotation.y,eulerRotation.z);
 
-        if(Input.GetMouseButtonDown(0) && Time.time >= fireTime) {
+        if(Time.time >= fireTime) {
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
             FindObjectOfType<AudioManager>().Play("Sniper");       
             bullet.GetComponent<Projectile>().damage=baseDamage;

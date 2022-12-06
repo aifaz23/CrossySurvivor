@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100008, guid: bafe1e4d156ffe945aa89b304a97f261, type: 3}
       propertyPath: m_Name
-      value: sniper
+      value: sniper Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: bafe1e4d156ffe945aa89b304a97f261, type: 3}
       propertyPath: m_TagString
@@ -92,4 +92,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 7194790532775940874, guid: b4ff9292485f5f4468b053f64fa6f7d3, type: 3}
   fireRate: 2
-  damages: 100
+  baseDamage: 80

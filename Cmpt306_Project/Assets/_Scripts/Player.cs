@@ -12,9 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] public float maxHealth = 100.0f; 
     [SerializeField] public float health = 100.0f; 
     private int distanceTravelled;
-    private bool speedBuff = false;
+    public bool speedBuff = false;
     public float speedBuffTime;
-    private bool shieldBuff = false;
+    public bool shieldBuff = false;
     public float shieldBuffTime;
     
     void Start(){
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     private void MovePlayer() {
         float width = (1/ (Camera.main.WorldToViewportPoint(new Vector3(1,1,0)).x - .5f))/2;
         //Forward & Backward Movement 
-        if (Input.GetKey(KeyCode.W)){
+        if (Input.GetKey(Binds.forward)){
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
             FindObjectOfType<AudioManager>().Play("Footstep");    
             distanceTravelled = (int)transform.position.z;
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             }
         }
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(Binds.backward)) {
             transform.Translate(Vector3.back * moveSpeed * Time.deltaTime); 
             FindObjectOfType<AudioManager>().Play("Footstep");    
             if(transform.position.x>width){
@@ -76,8 +76,8 @@ public class Player : MonoBehaviour
         }
 
         //Left and Right Rotation
-        if (Input.GetKey(KeyCode.D)) _rotation = Vector3.up;
-        else if (Input.GetKey(KeyCode.A)) _rotation = Vector3.down; 
+        if (Input.GetKey(Binds.right)) _rotation = Vector3.up;
+        else if (Input.GetKey(Binds.left)) _rotation = Vector3.down; 
         else _rotation = Vector3.zero; 
         transform.Rotate(_rotation * rotateSpeed * Time.deltaTime); 
 
