@@ -2921,7 +2921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1053828750}
   pauseButton: {fileID: 1310436882}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 829492069}
 --- !u!1 &1210665506
 GameObject:
   m_ObjectHideFlags: 0
@@ -4622,6 +4622,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1210006003}
   gameScoreText: {fileID: 829492069}
   hotbarCanvas: {fileID: 813427712}
+  bossEncounterRate: 30
 --- !u!4 &1966741809
 Transform:
   m_ObjectHideFlags: 0

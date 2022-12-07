@@ -97,7 +97,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnBoss(){
         Vector3 cameraPosition = GameManager.instance.camera.transform.position;
-        Vector3 bossLocation = new Vector3(cameraPosition.x,1.32f,cameraPosition.z+10);
+        Vector3 bossLocation = new Vector3(cameraPosition.x,1.32f,cameraPosition.z+5);
         Instantiate(bossPrefab, bossLocation, transform.rotation);
     }
 }
