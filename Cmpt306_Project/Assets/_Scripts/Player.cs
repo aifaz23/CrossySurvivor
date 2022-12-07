@@ -157,6 +157,24 @@ public class Player : MonoBehaviour
         shieldBuffTime = Time.time + (Random.Range(1f, 5f));
         shieldBuff = true;
     }
+
+
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.transform.tag == "Obstacle")
+        {
+            Debug.Log("Collided with obstacle");
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector3.back * moveSpeed * Time.deltaTime * 2f);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime * 2f);
+            }
+        }
+    }
 }
 
 
