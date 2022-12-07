@@ -16,6 +16,7 @@ public class Enemy3 : MonoBehaviour
     [SerializeField] private float fireRate = 1f;
     private float fireTime;
     [SerializeField] public float projectileDamage = 8;
+    private float angle=0f;
 
     void Start()
     {
@@ -94,11 +95,11 @@ public class Enemy3 : MonoBehaviour
     {
         if (Time.time > fireTime)
         {
-            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 45, 0), this.transform);
-            GameObject bullet1 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -45, 0), this.transform);
-            GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -125, 0), this.transform);
-            GameObject bullet3 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 125, 0), this.transform);
-
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, angle, 0), this.transform);
+            angle +=15f;
+            if(angle >=360f){
+                angle = 0f;
+            }
             // bullet.GetComponent<Projectile>().damage = projectileDamage;
             fireTime = Time.time + fireRate;
         }

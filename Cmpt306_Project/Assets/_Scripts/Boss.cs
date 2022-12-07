@@ -55,9 +55,9 @@ public class Boss : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, Random.Range(90,270), 0);
             }else if(transform.position.x- cameraPos.x <Camera.main.transform.position.x -width){
                 transform.rotation = Quaternion.Euler(0, Random.Range(-90,90), 0);
-            }else if(transform.position.z-cameraPos.z >10.5){
+            }else if(transform.position.z-cameraPos.z >8.5){
                 transform.rotation = Quaternion.Euler(0, Random.Range(-180,0), 0);
-            }else if(transform.position.z- cameraPos.z <-10.5){
+            }else if(transform.position.z- cameraPos.z <-8.5){
                 transform.rotation = Quaternion.Euler(0, Random.Range(0,180), 0);
             }
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
