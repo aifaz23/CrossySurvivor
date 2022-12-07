@@ -7,9 +7,7 @@ public class TerrainGenerator : MonoBehaviour
     // to track where to put the next layer
     private Vector3 currentPosition = new Vector3(0, 0, -15);
     [SerializeField] private int maxLayerCount = 60;
-    // [SerializeField] private List<GameObject> grassList = new List<GameObject>();
     public List<GameObject> currentLayers = new List<GameObject>();
-    // private int grassNumber = 0;
     public int currentDistance = 0;
     [SerializeField] private GameObject spawner;
 
@@ -55,17 +53,24 @@ public class TerrainGenerator : MonoBehaviour
 
             GameObject terrain = Instantiate(terrainList[terrainNumber], currentPosition, Quaternion.identity, layer.transform);
 
-            if (layerCounter == 4)
+            if (layerCounter == 6)
             {
                 float width = (1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).x - .5f)) / 2;
+                List<int> obstacleLocations = new List<int>();
 
                 for (int i = 0; i < numOfObstacles; i++)
                 {
                     int randomObstacle = Random.Range(0, forestPrefabs.Count);
-                    float randomX = Random.Range(-(int)width, (int)width);
-                    
+                    int randomX = Random.Range((int)-width, (int)width);
+                    while (obstacleLocations.Contains(randomX))
+                    {
+                        randomX = Random.Range((int)-width, (int)width);
+                    }
+                    obstacleLocations.Add(randomX);
+
                     GameObject obstacle = Instantiate(forestPrefabs[randomObstacle], layer.transform);
                     obstacle.transform.position = new Vector3(randomX, transform.position.y, currentPosition.z);
+                    obstacle.transform.Rotate(0.0f, Random.Range(0, 360), 0.0f);
                 }
                 layerCounter = 0;
             }
@@ -90,17 +95,24 @@ public class TerrainGenerator : MonoBehaviour
 
             GameObject terrain = Instantiate(terrainList[terrainNumber], currentPosition, Quaternion.identity, layer.transform);
 
-            if (layerCounter == 4)
+            if (layerCounter == 6)
             {
                 float width = (1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).x - .5f)) / 2;
+                List<int> obstacleLocations = new List<int>();
 
                 for (int i = 0; i < numOfObstacles; i++)
                 {
                     int randomObstacle = Random.Range(0, desertPrefabs.Count);
-                    float randomX = Random.Range(-(int)width, (int)width);
+                    int randomX = Random.Range((int)-width, (int)width);
+                    while (obstacleLocations.Contains(randomX))
+                    {
+                        randomX = Random.Range((int)-width, (int)width);
+                    }
+                    obstacleLocations.Add(randomX);
 
                     GameObject obstacle = Instantiate(desertPrefabs[randomObstacle], layer.transform);
                     obstacle.transform.position = new Vector3(randomX, transform.position.y, currentPosition.z);
+                    obstacle.transform.Rotate(0.0f, Random.Range(0, 360), 0.0f);
                 }
                 layerCounter = 0;
             }
@@ -128,18 +140,26 @@ public class TerrainGenerator : MonoBehaviour
             layer.transform.position = transform.position;
 
             GameObject terrain = Instantiate(terrainList[terrainNumber], currentPosition, Quaternion.identity, layer.transform);
+            List<int> obstacleLocations = new List<int>();
 
-            if (layerCounter == 4)
+            if (layerCounter == 6)
             {
                 float width = (1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).x - .5f)) / 2;
 
                 for (int i = 0; i < numOfObstacles; i++)
                 {
                     int randomObstacle = Random.Range(0, forestPrefabs.Count);
-                    float randomX = Random.Range(-(int)width, (int)width);
+                    int randomX = Random.Range((int)-width, (int)width);
+
+                    while (obstacleLocations.Contains(randomX))
+                    {
+                        randomX = Random.Range((int)-width, (int)width);
+                    }
+                    obstacleLocations.Add(randomX);
 
                     GameObject obstacle = Instantiate(forestPrefabs[randomObstacle], layer.transform);
                     obstacle.transform.position = new Vector3(randomX, transform.position.y, currentPosition.z);
+                    obstacle.transform.Rotate(0.0f, Random.Range(0, 360), 0.0f);
                 }
                 layerCounter = 0;
             }
@@ -164,17 +184,25 @@ public class TerrainGenerator : MonoBehaviour
 
             GameObject terrain = Instantiate(terrainList[terrainNumber], currentPosition, Quaternion.identity, layer.transform);
 
-            if (layerCounter == 4)
+            if (layerCounter == 6)
             {
                 float width = (1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).x - .5f)) / 2;
+                List<int> obstacleLocations = new List<int>();
 
                 for (int i = 0; i < numOfObstacles; i++)
                 {
                     int randomObstacle = Random.Range(0, desertPrefabs.Count);
-                    float randomX = Random.Range(-(int)width, (int)width);
+                    int randomX = Random.Range((int)-width, (int)width);
+
+                    while (obstacleLocations.Contains(randomX))
+                    {
+                        randomX = Random.Range((int)-width, (int)width);
+                    }
+                    obstacleLocations.Add(randomX);
 
                     GameObject obstacle = Instantiate(desertPrefabs[randomObstacle], layer.transform);
                     obstacle.transform.position = new Vector3(randomX, transform.position.y, currentPosition.z);
+                    obstacle.transform.Rotate(0.0f, Random.Range(0, 360), 0.0f);
                 }
                 layerCounter = 0;
             }

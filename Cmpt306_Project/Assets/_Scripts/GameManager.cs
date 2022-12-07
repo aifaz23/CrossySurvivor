@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
             score += 1;
             counter += 1;
             gameScoreText.text = "Score: " + score.ToString();
-            print(score);
+            // print(score);
             if (counter == 17)
             {
                 bossCanvas.SetActive(true);
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
                 script.blink();
             }
 
-            if (score % 20 == 0)
+            if (score % 99999 == 0)
             {
                 counter = 0;
                 changePhase();

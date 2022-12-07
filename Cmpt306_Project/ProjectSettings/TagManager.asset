@@ -8,6 +8,10 @@ TagManager:
   - Drop
   - Gun
   - Boss
+  - Enemy1
+  - Enemy2
+  - Enemy3
+  - Obstacle
   layers:
   - Default
   - TransparentFX

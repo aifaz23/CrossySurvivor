@@ -61,6 +61,10 @@ public class enemyProjectile : MonoBehaviour
             other.GetComponent<Player>().TakeDamage(damage);
             Destroy(this.gameObject);
         }
+        else if (other.transform.tag == "Obstacle")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
 
