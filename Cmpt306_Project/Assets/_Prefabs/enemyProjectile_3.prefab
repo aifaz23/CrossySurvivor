@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7236771604744701663}
   m_Layer: 0
   m_Name: enemyProjectile_3
-  m_TagString: Untagged
+  m_TagString: Enemy3_bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,6 +201,10 @@ PrefabInstance:
     - target: {fileID: 4000011355271246, guid: 8450b3fba93f2e0478311468c3d3e969, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000010771307922, guid: 8450b3fba93f2e0478311468c3d3e969, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8450b3fba93f2e0478311468c3d3e969, type: 3}

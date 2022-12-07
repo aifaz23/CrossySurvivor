@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
                 script.blink();
             }
 
-            if (score % 99999 == 0)
+            if (score % 20 == 0)
             {
                 counter = 0;
                 changePhase();
@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(true);
         BlinkText script = text.GetComponent<BlinkText>();
         script.blink();
+        GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().addExtraLayer();
         Enemy1.GetComponent<Enemy1>().resetStats();
         Enemy2.GetComponent<Enemy2>().resetStats();
         Enemy3.GetComponent<Enemy3>().resetStats();
@@ -130,8 +131,7 @@ public class GameManager : MonoBehaviour
         isBossPhase = !isBossPhase;
         if (isBossPhase)
         {
-            // enemySpawner.SpawnBoss();
-            GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().switchTerrain();
+            enemySpawner.SpawnBoss();
         }
     }
     public void summonDrop(Vector3 dropPosition)

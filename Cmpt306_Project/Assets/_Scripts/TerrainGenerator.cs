@@ -20,7 +20,7 @@ public class TerrainGenerator : MonoBehaviour
     private void Start()
     {
         layerCounter = 0;
-        maxLayerCount = 60;
+        maxLayerCount = 35;
         switchTerrain();
         for (int i = 0; i < maxLayerCount; i++)
         {
@@ -131,6 +131,8 @@ public class TerrainGenerator : MonoBehaviour
 
     private void SpawnTerrain()
     {
+        maxLayerCount = 30;
+        int[] xLocation = new int[] { -19, 19 };
         if (terrainNumber == 0)
         {
             int numOfObstacles = Random.Range(1, 4);
@@ -162,6 +164,12 @@ public class TerrainGenerator : MonoBehaviour
                     obstacle.transform.Rotate(0.0f, Random.Range(0, 360), 0.0f);
                 }
                 layerCounter = 0;
+            }
+            if (currentDistance % 7 == 0 && currentDistance != 0)
+            {
+                GameObject sp = Instantiate(spawner, currentPosition, Quaternion.identity, layer.transform);
+                int index = Random.Range(0, 2);
+                sp.transform.position = new Vector3(sp.transform.position.x + xLocation[index], sp.transform.position.y, sp.transform.position.z);
             }
 
             currentLayers.Add(layer);
@@ -206,6 +214,12 @@ public class TerrainGenerator : MonoBehaviour
                 }
                 layerCounter = 0;
             }
+            if (currentDistance % 7 == 0 && currentDistance != 0)
+            {
+                GameObject sp = Instantiate(spawner, currentPosition, Quaternion.identity, layer.transform);
+                int index = Random.Range(0, 2);
+                sp.transform.position = new Vector3(sp.transform.position.x + xLocation[index], sp.transform.position.y, sp.transform.position.z);
+            }
 
             currentLayers.Add(layer);
             layerCounter++;
@@ -222,5 +236,19 @@ public class TerrainGenerator : MonoBehaviour
     public void switchTerrain()
     {
         terrainNumber = Random.Range(0, terrainList.Count);
+    }
+
+    public void addExtraLayer()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            GameObject layer = new GameObject("Layer");
+            layer.transform.SetParent(transform);
+            layer.transform.position = transform.position;
+
+            GameObject terrain = Instantiate(terrainList[terrainNumber], currentPosition, Quaternion.identity, layer.transform);
+            currentLayers.Add(layer);
+            currentPosition.z++;
+        }
     }
 }

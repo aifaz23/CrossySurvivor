@@ -12,6 +12,9 @@ TagManager:
   - Enemy2
   - Enemy3
   - Obstacle
+  - Enemy1_bullet
+  - Enemy2_bullet
+  - Enemy3_bullet
   layers:
   - Default
   - TransparentFX

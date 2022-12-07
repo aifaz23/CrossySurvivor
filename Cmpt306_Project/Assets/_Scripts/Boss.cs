@@ -75,7 +75,7 @@ public class Boss : MonoBehaviour
         if (health <= 0) {
             Destroy(this.gameObject);
             Instantiate(BossDrops, transform.position, transform.rotation);
-            // GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().switchTerrain();
+            GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().switchTerrain();
         }
     }
 

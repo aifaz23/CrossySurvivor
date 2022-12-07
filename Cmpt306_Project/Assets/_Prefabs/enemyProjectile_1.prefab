@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7236771604744701663}
   m_Layer: 0
   m_Name: enemyProjectile_1
-  m_TagString: Untagged
+  m_TagString: Enemy1_bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,6 +200,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011474937060, guid: e81de46ed97367e40a14344a282773db, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000011259945810, guid: e81de46ed97367e40a14344a282773db, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95000011259945810, guid: e81de46ed97367e40a14344a282773db, type: 3}
