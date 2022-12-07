@@ -162,13 +162,21 @@ public class Player : MonoBehaviour
         if (other.transform.tag == "Obstacle")
         {
             Debug.Log("Collided with obstacle");
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(Binds.forward))
             {
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime * 2f);
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(Binds.backward))
             {
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime * 2f);
+            }
+            if (Input.GetKey(Binds.left))
+            {
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime * 2f);
+            }
+            if (Input.GetKey(Binds.right))
+            {
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime * 2f);
             }
         }
     }

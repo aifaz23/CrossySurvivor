@@ -21,7 +21,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         layerCounter = 0;
         maxLayerCount = 35;
-        switchTerrain();
+        terrainNumber = Random.Range(0, terrainList.Count);
         for (int i = 0; i < maxLayerCount; i++)
         {
             InitialSpawn();
@@ -235,7 +235,13 @@ public class TerrainGenerator : MonoBehaviour
 
     public void switchTerrain()
     {
-        terrainNumber = Random.Range(0, terrainList.Count);
+        if(terrainNumber==0){
+            terrainNumber=1;
+        }
+        else{
+            terrainNumber=0;
+        }
+        
     }
 
     public void addExtraLayer()
