@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7236771604744701663}
   m_Layer: 0
   m_Name: enemyProjectile_2
-  m_TagString: Untagged
+  m_TagString: Enemy2_bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -200,6 +200,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 137000010934754840, guid: 8306882d88a96b64291460c8d7664f4d, type: 3}
       propertyPath: m_CastShadows
+    - target: {fileID: 95000013432948158, guid: 8306882d88a96b64291460c8d7664f4d, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

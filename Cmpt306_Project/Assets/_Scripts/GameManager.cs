@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject camera;
     public static bool isBossPhase = false;
     public static int score = 0;
-    public int counter  = 0;
+    public int counter = 0;
     public float scoreRate = 1f;
     private float nextScore = 0.0f;
     public TextMeshProUGUI scoreTxt;
@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(true);
         BlinkText script = text.GetComponent<BlinkText>();
         script.blink();
+        GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().addExtraLayer();
         Enemy1.GetComponent<Enemy1>().resetStats();
         Enemy2.GetComponent<Enemy2>().resetStats();
         Enemy3.GetComponent<Enemy3>().resetStats();
@@ -98,7 +99,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("LeaderboardScene");
     }
 
-    public void turnOn() {
+    public void turnOn()
+    {
         scaleDown = true;
     }
 
@@ -137,7 +139,8 @@ public class GameManager : MonoBehaviour
             enemySpawner.SpawnBoss();
         }
     }
-    public void summonDrop(Vector3 dropPosition){
+    public void summonDrop(Vector3 dropPosition)
+    {
         normalEnemyDrop.DropItem(dropPosition);
     }
 

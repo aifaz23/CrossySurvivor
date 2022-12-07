@@ -7,35 +7,40 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] private float rotateSpeed = 360.0f; 
-    [SerializeField] private Vector3 _rotation; 
-    [SerializeField] public float maxHealth = 100.0f; 
-    [SerializeField] public float health = 100.0f; 
+    [SerializeField] private float rotateSpeed = 360.0f;
+    [SerializeField] private Vector3 _rotation;
+    [SerializeField] public float maxHealth = 100.0f;
+    [SerializeField] public float health = 100.0f;
     private int distanceTravelled;
     public bool speedBuff = false;
     public float speedBuffTime;
     public bool shieldBuff = false;
     public float shieldBuffTime;
-    
-    void Start(){
+
+    void Start()
+    {
         distanceTravelled = 0;
         health = maxHealth;
-        
-        
+
+
     }
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > speedBuffTime && speedBuff){
-            speedBuff=false;
+        if (Time.time > speedBuffTime && speedBuff)
+        {
+            speedBuff = false;
         }
-        if (Time.time > shieldBuffTime && shieldBuff){
-            shieldBuff=false;
+        if (Time.time > shieldBuffTime && shieldBuff)
+        {
+            shieldBuff = false;
         }
-        if (health <= 10.0f) {
+        if (health <= 10.0f)
+        {
             GameManager.scaleDown = true;
         }
-        if (health > 10.0f) {
+        if (health > 10.0f)
+        {
             GameManager.scaleDown = false;
         }
 
@@ -50,8 +55,9 @@ public class Player : MonoBehaviour
     }
 
     //Player Input Controls
-    private void MovePlayer() {
-        float width = (1/ (Camera.main.WorldToViewportPoint(new Vector3(1,1,0)).x - .5f))/2;
+    private void MovePlayer()
+    {
+        float width = (1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).x - .5f)) / 2;
         //Forward & Backward Movement 
         if (Input.GetKey(Binds.forward)){
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); 
@@ -86,59 +92,86 @@ public class Player : MonoBehaviour
 
         //Kill player if too far ahead or behind
         Vector3 cameraPosition = GameManager.instance.camera.transform.position;
-        if(cameraPosition.z>(transform.position.z+8.0f)){
+        if (cameraPosition.z > (transform.position.z + 8.0f))
+        {
             kill();
-        }else if(cameraPosition.z<(transform.position.z-8.0f)){
+        }
+        else if (cameraPosition.z < (transform.position.z - 8.0f))
+        {
             kill();
         }
 
     }
-  
-    public void TakeDamage (float damage) {
-        if(!shieldBuff){
-            health -= damage; 
+
+    public void TakeDamage(float damage)
+    {
+        if (!shieldBuff)
+        {
+            health -= damage;
         }
-        if (health <= 0) {
-            kill();          
+        if (health <= 0)
+        {
+            kill();
         }
     }
 
-    public void kill () {
-        health = 0; 
+    public void kill()
+    {
+        health = 0;
         GameObject.Find("HealthBar").GetComponent<HealthBar>().SetHealth(health);
-        if (health <= 0) {
+        if (health <= 0)
+        {
             FindObjectOfType<AudioManager>().Play("GameOver");
-            Destroy(this.gameObject);         
-            GameManager.instance.GameOver(); 
-            GameManager.instance.playerDead = true;      
+            Destroy(this.gameObject);
+            GameManager.instance.GameOver();
+            GameManager.instance.playerDead = true;
         }
     }
 
-    public void increaseDamage (float increasedamage) {
-        this.GetComponent<GunSwitching>().damageIncrease+=increasedamage;
+    public void increaseDamage(float increasedamage)
+    {
+        this.GetComponent<GunSwitching>().damageIncrease += increasedamage;
     }
 
-    public void restoreHP (float hp) {
+    public void restoreHP(float hp)
+    {
         health += hp;
-        if(health>maxHealth){
-            health=maxHealth;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
         }
     }
 
     public void getSpeedBuff()
     {
-        moveSpeed+= (Random.Range(0.5f,1));
-        speedBuffTime = Time.time + (Random.Range(1f,5f));
-        speedBuff=true;
+        moveSpeed += (Random.Range(0.5f, 1));
+        speedBuffTime = Time.time + (Random.Range(1f, 5f));
+        speedBuff = true;
     }
-    
+
     public void getShieldBuff()
     {
-        shieldBuffTime = Time.time + (Random.Range(1f,5f));
-        shieldBuff=true;
+        shieldBuffTime = Time.time + (Random.Range(1f, 5f));
+        shieldBuff = true;
     }
 
 
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.transform.tag == "Obstacle")
+        {
+            Debug.Log("Collided with obstacle");
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector3.back * moveSpeed * Time.deltaTime * 2f);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime * 2f);
+            }
+        }
+    }
 }
 
 

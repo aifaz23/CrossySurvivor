@@ -19,85 +19,105 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         //Only spawn normal enemies when in normal phase(not boss phase)
-        if(!GameManager.getIsBossPhase()){
+        if (!GameManager.getIsBossPhase())
+        {
             SpawnEnemy();
-        }else{
+        }
+        else
+        {
             spawnTimer = Time.time + spawnRate;
         }
     }
 
-    private void SpawnEnemy() {
-        if (Time.time > spawnTimer) {
-            float width = (1/ (Camera.main.WorldToViewportPoint(new Vector3(1,1,0)).x - .5f))/2;
+    private void SpawnEnemy()
+    {
+        if (Time.time > spawnTimer)
+        {
+            float width = (1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).x - .5f)) / 2;
             Vector3 cameraPosition = GameManager.instance.camera.transform.position;
             int newX = (int)width;
-            int leftOrRight = (Random.Range(0,2));
+            int leftOrRight = (Random.Range(0, 2));
             int newZ = 10;
-            if(leftOrRight==1){
+            if (leftOrRight == 1)
+            {
                 newX = (int)-width;
             }
 
             int randomEnemy = Random.Range(0, 3);
             GameObject enemy = enemyPrefabList[randomEnemy];
-            if (GameManager.score >= 100) {
-                if (GameManager.score % 25 == 0) {
-                    if (enemy.tag == "Enemy1"){
+            if (GameManager.score >= 100)
+            {
+                if (GameManager.score % 25 == 0)
+                {
+                    if (enemy.tag == "Enemy1")
+                    {
                         enemy.GetComponent<Enemy1>().health = enemy.GetComponent<Enemy1>().health + 1;
                     }
-                    if (enemy.tag == "Enemy2"){
+                    if (enemy.tag == "Enemy2")
+                    {
                         enemy.GetComponent<Enemy2>().health = enemy.GetComponent<Enemy2>().health + 1;
                     }
-                    if (enemy.tag == "Enemy3"){
+                    if (enemy.tag == "Enemy3")
+                    {
                         enemy.GetComponent<Enemy3>().health = enemy.GetComponent<Enemy3>().health + 1;
                     }
                 }
             }
 
-            if (GameManager.scaleDown) {
-                if (enemy.tag == "Enemy1"){
+            if (GameManager.scaleDown)
+            {
+                if (enemy.tag == "Enemy1")
+                {
                     spawnRate = 20f;
                     enemy.GetComponent<Enemy1>().damageToPlayer = 1.0f;
                     enemy.GetComponent<Enemy1>().projectileDamage = 0.5f;
                 }
-                if (enemy.tag == "Enemy2"){
+                if (enemy.tag == "Enemy2")
+                {
                     spawnRate = 20f;
                     enemy.GetComponent<Enemy2>().damageToPlayer = 1.0f;
                     enemy.GetComponent<Enemy2>().projectileDamage = 0.5f;
                 }
-                if (enemy.tag == "Enemy3"){
+                if (enemy.tag == "Enemy3")
+                {
                     spawnRate = 20f;
                     enemy.GetComponent<Enemy3>().damageToPlayer = 1.0f;
                     enemy.GetComponent<Enemy3>().projectileDamage = 0.5f;
                 }
             }
-            
-            else if (!GameManager.scaleDown) {
-                if (enemy.tag == "Enemy1"){
+
+            else if (!GameManager.scaleDown)
+            {
+                if (enemy.tag == "Enemy1")
+                {
                     spawnRate = 10f;
                     enemy.GetComponent<Enemy1>().damageToPlayer = 20.0f;
                     enemy.GetComponent<Enemy1>().projectileDamage = 5.0f;
                 }
-                if (enemy.tag == "Enemy2"){
+                if (enemy.tag == "Enemy2")
+                {
                     spawnRate = 10f;
                     enemy.GetComponent<Enemy2>().damageToPlayer = 20.0f;
-                    enemy.GetComponent<Enemy2>().projectileDamage = 2.0f;                
+                    enemy.GetComponent<Enemy2>().projectileDamage = 2.0f;
                 }
-                if (enemy.tag == "Enemy3"){
+                if (enemy.tag == "Enemy3")
+                {
                     spawnRate = 10f;
                     enemy.GetComponent<Enemy3>().damageToPlayer = 20.0f;
-                    enemy.GetComponent<Enemy3>().projectileDamage = 8.0f;                
+                    enemy.GetComponent<Enemy3>().projectileDamage = 8.0f;
                 }
             }
 
-            Vector3 randomLocation = new Vector3(cameraPosition.x +newX,1,cameraPosition.z+newZ);
+            Vector3 randomLocation = new Vector3(cameraPosition.x + newX, 1, cameraPosition.z + newZ);
             Instantiate(enemy, randomLocation, transform.rotation);
             spawnTimer = Time.time + spawnRate;
         }
     }
 
-    public void SpawnBoss(){
+    public void SpawnBoss()
+    {
         Vector3 cameraPosition = GameManager.instance.camera.transform.position;
-        Vector3 bossLocation = new Vector3(cameraPosition.x,1.32f,cameraPosition.z+5);
+        Vector3 bossLocation = new Vector3(cameraPosition.x, 0.72f, cameraPosition.z + 5);
         Instantiate(bossPrefab, bossLocation, transform.rotation);
     }
 }
