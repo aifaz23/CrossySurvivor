@@ -39,15 +39,14 @@ public class enemyProjectile : MonoBehaviour
                     break;
                 }
         }
-        Destroy(this.gameObject, lifeTime);
         transform.SetParent(null);
+        Destroy(this.gameObject, lifeTime);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
         MoveProjectile();
     }
 

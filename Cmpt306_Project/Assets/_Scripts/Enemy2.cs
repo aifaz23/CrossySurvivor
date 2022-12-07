@@ -99,7 +99,6 @@ public class Enemy2 : MonoBehaviour
             GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -125, 0), this.transform);
             GameObject bullet3 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 125, 0), this.transform);
 
-            // bullet.GetComponent<Projectile>().damage = projectileDamage;
             fireTime = Time.time + fireRate;
         }
     }

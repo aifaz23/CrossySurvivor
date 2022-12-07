@@ -94,12 +94,11 @@ public class Enemy1 : MonoBehaviour
     {
         if (Time.time > fireTime)
         {
-            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 45, 0), this.transform);
-            GameObject bullet1 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -45, 0), this.transform);
-            GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, -125, 0), this.transform);
-            GameObject bullet3 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 125, 0), this.transform);
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 0, 0), this.transform);
+            GameObject bullet1 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 90, 0), this.transform);
+            GameObject bullet2 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 180, 0), this.transform);
+            GameObject bullet3 = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 270, 0), this.transform);
 
-            // bullet.GetComponent<Projectile>().damage = projectileDamage;
             fireTime = Time.time + fireRate;
         }
     }
