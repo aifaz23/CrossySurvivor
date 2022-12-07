@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     public static bool gameEnded = false;
     public static bool scaleDown = false;
     public int bossEncounterRate = 30;
-
+    public GameObject bossHealthCanvas;
+    
     void Start()
     {
         gameEnded = false;
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         isBossPhase = false;
         gameOver.SetActive(false);
         bossCanvas.SetActive(false);
+        bossHealthCanvas.SetActive(false);
         pauseMenu.SetActive(true);
         buffCanvas.SetActive(true);
         hotbarCanvas.SetActive(true);
@@ -134,9 +136,11 @@ public class GameManager : MonoBehaviour
     public void changePhase()
     {
         isBossPhase = !isBossPhase;
+        bossHealthCanvas.SetActive(false);
         if (isBossPhase)
         {
             enemySpawner.SpawnBoss();
+            bossHealthCanvas.SetActive(true);
         }
     }
     public void summonDrop(Vector3 dropPosition)

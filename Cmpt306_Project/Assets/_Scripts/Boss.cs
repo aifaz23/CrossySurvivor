@@ -6,8 +6,9 @@ public class Boss : MonoBehaviour
 {
     //Default Boss stats
     [SerializeField] private float moveSpeed = 2.0f; 
-    [SerializeField] private float health = 500.0f;
-    
+    [SerializeField] private float health = 500.0f; 
+    private float maxHealth = 500.0f;
+
     [SerializeField] private float damageToPlayer = 90.0f;
     [SerializeField] private float damageRate = 0.2f;
     [SerializeField] private float damageTime;
@@ -34,6 +35,8 @@ public class Boss : MonoBehaviour
     void Update()
     {
         ShootCircle();
+        GameObject.Find("BossHealth").GetComponent<HealthBar>().SetMaxHealth(maxHealth);
+        GameObject.Find("BossHealth").GetComponent<HealthBar>().SetHealth(health);
         Movement();
     }
 
