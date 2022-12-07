@@ -13,6 +13,10 @@ TagManager:
   - Enemy2
   - buffCanvas
   - Obstacle
+  - Enemy3_bullet
+  - Enemy2_bullet
+  - Enemy1_bullet
+  - Rocket
   layers:
   - Default
   - TransparentFX

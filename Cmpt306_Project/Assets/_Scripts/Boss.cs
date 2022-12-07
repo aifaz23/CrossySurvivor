@@ -22,12 +22,16 @@ public class Boss : MonoBehaviour
     //Random movement stuff
     private float changeDirectionTimer;
 
+    //Rocket Stuff
+    [SerializeField] private float rocketFireRate = 9f;
+    [SerializeField] private GameObject rocket;
 
     // Start is called before the first frame update
     void Start()
     {
         changeDirectionTimer = Random.Range(3,7);
         InvokeRepeating("Fire", 0f, 0.1f);
+        InvokeRepeating("FireRocket", 0f, rocketFireRate);
     }
 
     // Update is called once per frame
@@ -35,6 +39,7 @@ public class Boss : MonoBehaviour
     {
         ShootCircle();
         Movement();
+
     }
 
     private void Movement () {
@@ -100,8 +105,11 @@ public class Boss : MonoBehaviour
                 GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, currentAngle, 0), this.transform);
                 currentAngle+=10;
             }
-            // bullet.GetComponent<Projectile>().damage = projectileDamage;
             fireTime = Time.time + fireRate;
         }
+    }
+
+    private void FireRocket(){
+        GameObject launchedRocket = Instantiate(rocket, transform.position, transform.rotation);
     }
 }
