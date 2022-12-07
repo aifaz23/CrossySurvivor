@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 0
   player: {fileID: 1210665506}
   viewPos: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 10, z: 2}
@@ -1904,7 +1904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210665506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.135, z: 5.470501}
+  m_LocalPosition: {x: 0, y: 0.71, z: 5.470501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3038,11 +3038,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLayerCount: 30
-  grassList:
-  - {fileID: 239947088496703069, guid: 1c3a5a1470e9448bba9005c685b6c1ea, type: 3}
-  - {fileID: 4114080637802061877, guid: 5cfcc2687592440e694363904b032163, type: 3}
   currentDistance: 0
   spawner: {fileID: 7870330268581617523, guid: 34cae96141fc5489eb401256eabbdbe4, type: 3}
+  terrainList:
+  - {fileID: 8957304962413023527, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
+  - {fileID: 170308, guid: 4c4ea267b7f410b418aa1a42c46bacd3, type: 3}
+  forestPrefabs:
+  - {fileID: 9069115365609291303, guid: 60f79905accf3b24fa0114b941f1aac0, type: 3}
+  - {fileID: 6941765000743290380, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
+  - {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953, type: 3}
+  - {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
+  desertPrefabs:
+  - {fileID: 175704, guid: fb9f189dcf5d2ad4aad003a8a44b136d, type: 3}
+  - {fileID: 163980, guid: 2fb6f5d47657319408dbd4f3e8412b4c, type: 3}
+  - {fileID: 110776, guid: 63ff2386a1262d64f99de6e3e1183874, type: 3}
+  - {fileID: 143784, guid: 5d8a4c5c2390fc54e96a652c3eeaf313, type: 3}
+  terrainNumber: 0
 --- !u!4 &1971717601
 Transform:
   m_ObjectHideFlags: 0

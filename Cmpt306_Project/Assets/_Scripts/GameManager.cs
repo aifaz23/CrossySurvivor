@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject camera;
     public static bool isBossPhase = false;
     public static int score = 0;
-    public int counter  = 0;
+    public int counter = 0;
     public float scoreRate = 1f;
     private float nextScore = 0.0f;
     public TextMeshProUGUI scoreTxt;
@@ -54,13 +54,15 @@ public class GameManager : MonoBehaviour
             counter += 1;
             gameScoreText.text = "Score: " + score.ToString();
             print(score);
-            if(counter == 17) {
+            if (counter == 17)
+            {
                 bossCanvas.SetActive(true);
                 ArrivalText script = arriveText.GetComponent<ArrivalText>();
                 script.blink();
             }
 
-            if(score%999999 == 0){
+            if (score % 20 == 0)
+            {
                 counter = 0;
                 changePhase();
             }
@@ -91,7 +93,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("LeaderboardScene");
     }
 
-    public void turnOn() {
+    public void turnOn()
+    {
         scaleDown = true;
     }
 
@@ -127,10 +130,12 @@ public class GameManager : MonoBehaviour
         isBossPhase = !isBossPhase;
         if (isBossPhase)
         {
-            enemySpawner.SpawnBoss();
+            // enemySpawner.SpawnBoss();
+            GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().switchTerrain();
         }
     }
-    public void summonDrop(Vector3 dropPosition){
+    public void summonDrop(Vector3 dropPosition)
+    {
         normalEnemyDrop.DropItem(dropPosition);
     }
 
