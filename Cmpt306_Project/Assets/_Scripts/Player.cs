@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] private float rotateSpeed = 360.0f;
-    [SerializeField] private Vector3 _rotation;
     [SerializeField] public float maxHealth = 100.0f;
     [SerializeField] public float health = 100.0f;
     private int distanceTravelled;
