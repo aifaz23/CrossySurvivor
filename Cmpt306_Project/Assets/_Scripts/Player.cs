@@ -119,6 +119,7 @@ public class Player : MonoBehaviour
         GameObject.Find("HealthBar").GetComponent<HealthBar>().SetHealth(health);
         if (health <= 0)
         {
+            FindObjectOfType<AudioManager>().changeVolume("gameMusic", 0f);
             FindObjectOfType<AudioManager>().Play("GameOver");
             Destroy(this.gameObject);
             GameManager.instance.GameOver();
