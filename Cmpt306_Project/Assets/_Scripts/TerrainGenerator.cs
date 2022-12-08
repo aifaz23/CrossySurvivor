@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class TerrainGenerator : MonoBehaviour
     public int terrainNumber;
     public int layerCounter;
 
+    public NavMeshSurface surface;
     private void Start()
     {
         layerCounter = 0;
@@ -175,6 +177,8 @@ public class TerrainGenerator : MonoBehaviour
             currentLayers.Add(layer);
             layerCounter++;
 
+            surface.BuildNavMesh();
+
             if (currentLayers.Count > maxLayerCount)
             {
                 Destroy(currentLayers[0]);
@@ -224,6 +228,8 @@ public class TerrainGenerator : MonoBehaviour
             currentLayers.Add(layer);
             layerCounter++;
 
+            surface.BuildNavMesh();
+
             if (currentLayers.Count > maxLayerCount)
             {
                 Destroy(currentLayers[0]);
@@ -235,13 +241,15 @@ public class TerrainGenerator : MonoBehaviour
 
     public void switchTerrain()
     {
-        if(terrainNumber==0){
-            terrainNumber=1;
+        if (terrainNumber == 0)
+        {
+            terrainNumber = 1;
         }
-        else{
-            terrainNumber=0;
+        else
+        {
+            terrainNumber = 0;
         }
-        
+
     }
 
     public void addExtraLayer()

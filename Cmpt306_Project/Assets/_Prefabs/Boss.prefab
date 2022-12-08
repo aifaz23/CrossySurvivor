@@ -122,7 +122,7 @@ MonoBehaviour:
   fireRate: 5
   projectileDamage: 10
   rocketFireRate: 9
-  rocket: {fileID: 2072998305492523084, guid: abb41a7de798e2c449ffbdd0beb82cf8, type: 3}
+  rocket: {fileID: 4502178794131267513, guid: abb41a7de798e2c449ffbdd0beb82cf8, type: 3}
 --- !u!54 &5857231979955726313
 Rigidbody:
   m_ObjectHideFlags: 0
