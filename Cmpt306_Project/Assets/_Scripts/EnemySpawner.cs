@@ -45,11 +45,10 @@ public class EnemySpawner : MonoBehaviour
 
             int randomEnemy = Random.Range(0, 3);
             GameObject enemy = enemyPrefabList[randomEnemy];
-            if (GameManager.score >= 10)
+            if (GameManager.score >= 50)
             {
-                if (GameManager.score % 5 == 0)
-                {
-                    spawnRate = 1f;
+                if (GameManager.score % 25 == 0)
+                {              
                     if (enemy.tag == "Enemy1")
                     {
                         enemy.GetComponent<Enemy1>().health = enemy.GetComponent<Enemy1>().health + 5;
