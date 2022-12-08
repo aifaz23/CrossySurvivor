@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
-    [SerializeField] private float spawnRate = 10f;
+    [SerializeField] private float spawnRate = 20f;
     private float spawnTimer;
 
     // Update is called once per frame
@@ -90,19 +90,16 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (enemy.tag == "Enemy1")
                 {
-                    spawnRate = 10f;
                     enemy.GetComponent<Enemy1>().damageToPlayer = 20.0f;
                     enemy.GetComponent<Enemy1>().projectileDamage = 5.0f;
                 }
                 if (enemy.tag == "Enemy2")
                 {
-                    spawnRate = 10f;
                     enemy.GetComponent<Enemy2>().damageToPlayer = 20.0f;
                     enemy.GetComponent<Enemy2>().projectileDamage = 2.0f;
                 }
                 if (enemy.tag == "Enemy3")
                 {
-                    spawnRate = 10f;
                     enemy.GetComponent<Enemy3>().damageToPlayer = 20.0f;
                     enemy.GetComponent<Enemy3>().projectileDamage = 8.0f;
                 }
@@ -119,5 +116,11 @@ public class EnemySpawner : MonoBehaviour
         Vector3 cameraPosition = GameManager.instance.camera.transform.position;
         Vector3 bossLocation = new Vector3(cameraPosition.x, 0.72f, cameraPosition.z + 5);
         Instantiate(bossPrefab, bossLocation, transform.rotation);
+        bossPrefab.GetComponent<Boss>().increaseHealth();
+    }
+
+    public void scaleSpawnRate()
+    {
+        spawnRate = spawnRate * 0.99f;
     }
 }

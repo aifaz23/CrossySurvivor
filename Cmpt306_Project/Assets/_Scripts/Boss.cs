@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -14,7 +15,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float damageTime;
     [SerializeField] private GameObject BossDrops;
     [SerializeField] private GameObject projectile;
-    [SerializeField] private float fireRate = 10f;
+    [SerializeField] private float fireRate = 5f;
     private float fireTime;
     [SerializeField] public float projectileDamage = 10;
     private float angle = 0f;
@@ -35,6 +36,7 @@ public class Boss : MonoBehaviour
     void Update()
     {
         ShootCircle();
+        
         GameObject.Find("BossHealth").GetComponent<HealthBar>().SetMaxHealth(maxHealth);
         GameObject.Find("BossHealth").GetComponent<HealthBar>().SetHealth(health);
         Movement();
@@ -102,10 +104,19 @@ public class Boss : MonoBehaviour
             float currentAngle = 0f;
             while(currentAngle<360){
                 GameObject bullet = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, currentAngle, 0), this.transform);
+                
                 currentAngle+=10;
             }
+
             // bullet.GetComponent<Projectile>().damage = projectileDamage;
             fireTime = Time.time + fireRate;
         }
+    }
+
+    public void increaseHealth()
+    {
+        health += 500;
+        maxHealth += 500;
+        Debug.Log(health);
     }
 }

@@ -119,7 +119,7 @@ MonoBehaviour:
   damageTime: 0
   BossDrops: {fileID: 6300131185324888980, guid: 1852fb66187a2bf489abbe2e40edd908, type: 3}
   projectile: {fileID: 7272347684177601763, guid: ed0a6f708a18b694c869780b682da283, type: 3}
-  fireRate: 5
+  fireRate: 100
   projectileDamage: 10
 --- !u!54 &5857231979955726313
 Rigidbody:

@@ -102,11 +102,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("LeaderboardScene");
     }
 
-    public void turnOn()
-    {
-        scaleDown = true;
-    }
-
     void Awake()
     {
         if (instance == null)
@@ -141,6 +136,7 @@ public class GameManager : MonoBehaviour
         if (isBossPhase)
         {
             enemySpawner.SpawnBoss();
+            enemySpawner.scaleSpawnRate();
             bossHealthCanvas.SetActive(true);
         }
     }
