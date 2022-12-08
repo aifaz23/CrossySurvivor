@@ -26,7 +26,6 @@ public class ShotgunGun : MonoBehaviour
         Vector3 eulerRotation = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(0, eulerRotation.y,eulerRotation.z);
         if(Time.time >= fireTime) {
-            FindObjectOfType<AudioManager>().Play("Shotgun");   
             GameObject bullet;
             for(int i=0; i<5; i++){
                 bullet = Instantiate(projectile, transform.position, transform.rotation);    

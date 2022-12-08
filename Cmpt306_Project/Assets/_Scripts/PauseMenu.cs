@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         scoreText.enabled = true;
         FindObjectOfType<AudioManager>().changeVolume("BackgroundMusic", 0f);
+        FindObjectOfType<AudioManager>().changeVolume("gameMusic", 0.02f);
         Time.timeScale = 1f;
         isPaused = false;
         pauseButton.SetActive(true);
@@ -46,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause() {
         pauseMenuUI.SetActive(true);
         scoreText.enabled = false;
+        FindObjectOfType<AudioManager>().changeVolume("gameMusic", 0f);
         FindObjectOfType<AudioManager>().changeVolume("BackgroundMusic", 0.035f);
         Time.timeScale = 0f;
         isPaused = true;

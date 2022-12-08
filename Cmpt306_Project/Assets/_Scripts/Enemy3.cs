@@ -70,6 +70,7 @@ public class Enemy3 : MonoBehaviour
         if (health <= 0)
         {
             Destroy(this.gameObject);
+            FindObjectOfType<AudioManager>().Play("enemyDeath");   
             // either 0 or 1
             GameManager.instance.summonDrop(transform.position);
         }

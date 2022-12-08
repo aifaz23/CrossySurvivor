@@ -99,3 +99,27 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
+  - name: gameMusic
+    loop: 0
+    clip: {fileID: 8300000, guid: 712c0e0c85619e44f964b774fb983077, type: 3}
+    volume: 0.02
+    pitch: 1
+    source: {fileID: 0}
+  - name: enemyDeath
+    loop: 0
+    clip: {fileID: 8300000, guid: 935f35b67dca1694398e1f7941149c0e, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - name: bossDeath
+    loop: 0
+    clip: {fileID: 8300000, guid: 451010920aa66e34ea0c48f84eaf3062, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - name: pick
+    loop: 0
+    clip: {fileID: 8300000, guid: e01b99551b2e38e489e6432b033cd17d, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}

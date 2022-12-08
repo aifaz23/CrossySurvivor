@@ -18,6 +18,7 @@ public class SpeedDrop : MonoBehaviour
     void OnTriggerStay(Collider other) {
         if (other.transform.tag == "Player") {
             Destroy(this.gameObject); 
+            
             other.GetComponent<Player>().getSpeedBuff(); 
         }     
     }

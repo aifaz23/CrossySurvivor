@@ -26,7 +26,6 @@ public class SniperGun : MonoBehaviour
 
         if(Time.time >= fireTime) {
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
-            FindObjectOfType<AudioManager>().Play("Sniper");       
             bullet.GetComponent<Projectile>().damage=baseDamage;
             bullet.GetComponent<Projectile>().lifeTime=3.0f;
             bullet.GetComponent<Projectile>().moveSpeed=40.0f;

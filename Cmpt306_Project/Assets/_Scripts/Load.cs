@@ -26,5 +26,6 @@ public class Load : MonoBehaviour
     public void Restart() {
         SceneManager.LoadScene("GameScene");
         FindObjectOfType<AudioManager>().changeVolume("BackgroundMusic", 0.0f);
+        FindObjectOfType<AudioManager>().changeVolume("gameMusic", 0.02f);
     }
 }

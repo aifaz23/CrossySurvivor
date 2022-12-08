@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         hotbarCanvas.SetActive(true);
         playerDead = false;
         score = 0;
+        FindObjectOfType<AudioManager>().Play("gameMusic");   
     }
 
     void Update()
@@ -97,6 +98,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadLeaderboard()
     {
         yield return new WaitForSeconds(4.0f);
+        FindObjectOfType<AudioManager>().changeVolume("gameMusic", 0f);
         FindObjectOfType<AudioManager>().changeVolume("BackgroundMusic", 0.035f);
         SceneManager.LoadScene("LeaderboardScene");
     }

@@ -77,6 +77,7 @@ public class Boss : MonoBehaviour
         health -=damage;
         if (health <= 0) {
             Destroy(this.gameObject);
+            FindObjectOfType<AudioManager>().Play("bossDeath");   
             Instantiate(BossDrops, transform.position, transform.rotation);
             GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().switchTerrain();
         }

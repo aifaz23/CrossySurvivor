@@ -128,11 +128,13 @@ public class Player : MonoBehaviour
 
     public void increaseDamage(float increasedamage)
     {
+        FindObjectOfType<AudioManager>().Play("pick");   
         this.GetComponent<GunSwitching>().damageIncrease += increasedamage;
     }
 
     public void restoreHP(float hp)
     {
+        FindObjectOfType<AudioManager>().Play("pick");   
         health += hp;
         if (health > maxHealth)
         {
@@ -142,6 +144,7 @@ public class Player : MonoBehaviour
 
     public void getSpeedBuff()
     {
+        FindObjectOfType<AudioManager>().Play("pick");   
         moveSpeed += (Random.Range(0.5f, 1));
         speedBuffTime = Time.time + (Random.Range(1f, 5f));
         speedBuff = true;
@@ -149,6 +152,7 @@ public class Player : MonoBehaviour
 
     public void getShieldBuff()
     {
+        FindObjectOfType<AudioManager>().Play("pick");   
         shieldBuffTime = Time.time + (Random.Range(1f, 5f));
         shieldBuff = true;
     }
