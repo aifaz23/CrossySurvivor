@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
             score += 1;
             counter += 1;
             gameScoreText.text = "Score: " + score.ToString();
-            print(score);
             if(counter == bossEncounterRate-3) {
                 bossCanvas.SetActive(true);
                 ArrivalText script = arriveText.GetComponent<ArrivalText>();

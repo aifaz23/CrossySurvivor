@@ -53,7 +53,11 @@ public class Projectile : MonoBehaviour
         }
         else if (other.transform.tag == "Obstacle")
         {
-            Debug.Log("Bullet Collided");
+            Destroy(this.gameObject);
+        }
+        else if (other.transform.tag == "Rocket")
+        {
+            other.GetComponent<Rocket>().TakeDamage(damage);
             Destroy(this.gameObject);
         }
     }

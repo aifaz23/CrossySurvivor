@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -224,6 +225,7 @@ public class TerrainGenerator : MonoBehaviour
             currentLayers.Add(layer);
             layerCounter++;
 
+
             if (currentLayers.Count > maxLayerCount)
             {
                 Destroy(currentLayers[0]);
@@ -235,13 +237,15 @@ public class TerrainGenerator : MonoBehaviour
 
     public void switchTerrain()
     {
-        if(terrainNumber==0){
-            terrainNumber=1;
+        if (terrainNumber == 0)
+        {
+            terrainNumber = 1;
         }
-        else{
-            terrainNumber=0;
+        else
+        {
+            terrainNumber = 0;
         }
-        
+
     }
 
     public void addExtraLayer()

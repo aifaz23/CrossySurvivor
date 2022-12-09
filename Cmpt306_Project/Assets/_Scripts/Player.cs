@@ -164,7 +164,6 @@ public class Player : MonoBehaviour
     {
         if (other.transform.tag == "Obstacle")
         {
-            Debug.Log("Collided with obstacle");
             if (Input.GetKey(Binds.forward))
             {
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime * 2f);
