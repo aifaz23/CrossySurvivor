@@ -13,16 +13,22 @@ public class Rocket : MonoBehaviour
     {
         cam = Camera.main;
     }
+    
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.player) {//null reference check
+            Ray ray = new Ray(GameManager.instance.player.transform.position, GameManager.instance.player.transform.forward);
+            RaycastHit hit;
 
-        Ray ray = cam.ScreenPointToRay(GameManager.instance.player.transform.position);
-        RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)){
+                agent.SetDestination(hit.point);
+            }
+        }
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            agent.SetDestination(hit.point);
+        //If boss dies kill this
+        if(!GameManager.getIsBossPhase()){
+            Destroy(this.gameObject);
         }
     }
 

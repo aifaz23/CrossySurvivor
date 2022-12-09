@@ -25,6 +25,7 @@ public class Boss : MonoBehaviour
     //Rocket Stuff
     [SerializeField] private float rocketFireRate = 9f;
     [SerializeField] private GameObject rocket;
+    
 
     // Start is called before the first frame update
     void Start()
