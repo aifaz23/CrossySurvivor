@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 
@@ -36,9 +35,6 @@ public class GameManager : MonoBehaviour
     public static bool gameEnded = false;
     public static bool scaleDown = false;
     public int bossEncounterRate = 30;
-
-    //Pathfinding stuff
-    public NavMeshSurface surface;
 
     void Start()
     {
@@ -140,7 +136,6 @@ public class GameManager : MonoBehaviour
         if (isBossPhase)
         {
             enemySpawner.SpawnBoss();
-            surface.BuildNavMesh();
         }
     }
     public void summonDrop(Vector3 dropPosition)

@@ -5,30 +5,14 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] private float health = 100.0f;
     [SerializeField] private float damage = 60.0f;
+    [SerializeField] private float moveSpeed = 3.0f; 
 
-    public NavMeshAgent agent;
-    public Camera cam;
-
-    void Start()
-    {
-        cam = Camera.main;
-    }
-    
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.player) {//null reference check
-            Ray ray = new Ray(GameManager.instance.player.transform.position, GameManager.instance.player.transform.forward);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit)){
-                agent.SetDestination(hit.point);
-            }
-        }
-
-        //If boss dies kill this
-        if(!GameManager.getIsBossPhase()){
-            Destroy(this.gameObject);
+        if(GameManager.instance.player){
+            transform.LookAt(GameManager.instance.player.transform.position);
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
     }
 
