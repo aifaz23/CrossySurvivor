@@ -166,19 +166,19 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(Binds.forward))
             {
-                transform.Translate(Vector3.back * moveSpeed * Time.deltaTime * 2f);
+                transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
             }
             if (Input.GetKey(Binds.backward))
             {
-                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime * 2f);
+                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime );
             }
             if (Input.GetKey(Binds.left))
             {
-                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime * 2f);
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
             }
             if (Input.GetKey(Binds.right))
             {
-                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime * 2f);
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
             }
         }
     }

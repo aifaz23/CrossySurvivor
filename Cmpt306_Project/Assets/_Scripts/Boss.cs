@@ -24,17 +24,12 @@ public class Boss : MonoBehaviour
     //Random movement stuff
     private float changeDirectionTimer;
 
-    //Rocket Stuff
-    [SerializeField] private float rocketFireRate = 9f;
-    [SerializeField] private GameObject rocket;
-    
 
     // Start is called before the first frame update
     void Start()
     {
         changeDirectionTimer = Random.Range(3,7);
         InvokeRepeating("Fire", 0f, 0.1f);
-        InvokeRepeating("FireRocket", 0f, rocketFireRate);
     }
 
     // Update is called once per frame
@@ -45,7 +40,6 @@ public class Boss : MonoBehaviour
         GameObject.Find("BossHealth").GetComponent<HealthBar>().SetMaxHealth(maxHealth);
         GameObject.Find("BossHealth").GetComponent<HealthBar>().SetHealth(health);
         Movement();
-
     }
 
     private void Movement () {
@@ -113,15 +107,16 @@ public class Boss : MonoBehaviour
                 
                 currentAngle+=10;
             }
+
+            // bullet.GetComponent<Projectile>().damage = projectileDamage;
             fireTime = Time.time + fireRate;
         }
     }
 
-    public void increaseHealth(){
+    public void increaseHealth()
+    {
         health += 500;
         maxHealth += 500;
+        Debug.Log(health);
     }
-        
-    private void FireRocket(){
-        GameObject launchedRocket = Instantiate(rocket, transform.position, transform.rotation);
-    }
+}
